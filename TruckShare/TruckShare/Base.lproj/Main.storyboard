@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="edN-yV-1vb">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back.png" id="UAb-Pz-L4a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="vyR-kG-it1" userLabel="View - Header">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AGi-Zx-w0N">
+                                        <rect key="frame" x="19" y="19" width="126" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.37254901960784315" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="xHc-N1-kAy" userLabel="View - Login ">
+                                <rect key="frame" x="22" y="91" width="277" height="165"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" id="lqg-BY-a8U">
+                                        <rect key="frame" x="20" y="20" width="237" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="6Sn-q1-DJ9">
+                                        <rect key="frame" x="20" y="58" width="237" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AJE-CJ-qk1">
+                                        <rect key="frame" x="117" y="94" width="138" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Forgot Password?"/>
+                                        <connections>
+                                            <action selector="btnForgotPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KwY-4N-VQ2"/>
+                                            <segue destination="9Pd-Jj-Goa" kind="push" id="SW9-gx-hza"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="w9g-D7-SYP">
+                                        <rect key="frame" x="20" y="127" width="237" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="LOGIN"/>
+                                        <connections>
+                                            <action selector="btnLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IFo-UL-qsM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Ru-dC-vY2">
+                                <rect key="frame" x="253" y="505" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.54117647058823526" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hVV-UB-Ztk"/>
+                                    <segue destination="5ZZ-6x-716" kind="push" id="lHb-lP-u5a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="feH-Ef-t4b">
+                                <rect key="frame" x="84" y="328" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FB"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hhx-s7-ECJ">
+                                <rect key="frame" x="138" y="328" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="G+"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SF4-Ky-Gdr">
+                                <rect key="frame" x="189" y="328" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Twitter"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88892093475320855" green="0.86080016058147402" blue="0.85684003127112918" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PaZ-vR-E4c"/>
+                    <connections>
+                        <outlet property="txtPassword" destination="6Sn-q1-DJ9" id="iKx-Ze-cON"/>
+                        <outlet property="txtUsername" destination="lqg-BY-a8U" id="XID-Rq-dHw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="331"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="wwE-Jk-6aO">
+            <objects>
+                <viewController id="9Pd-Jj-Goa" customClass="HomeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m4p-BI-VSZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="VBe-Ye-VfF" userLabel="View - Header">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HPF-eC-HML">
+                                        <rect key="frame" x="62" y="19" width="126" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="42b-sI-rTB">
+                                        <rect key="frame" x="11" y="16" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt;"/>
+                                        <connections>
+                                            <action selector="btnBack:" destination="9Pd-Jj-Goa" eventType="touchUpInside" id="Dbo-C8-ORk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Rf-Yl-Uwa">
+                                <rect key="frame" x="83" y="184" width="189" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9FU-Hs-Dvw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wmW-Ah-TcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="1081"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="Y5i-Wi-XPg">
+            <objects>
+                <viewController id="5ZZ-6x-716" customClass="RegisterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="njr-1G-1Ob">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="bau-r5-UUV" userLabel="View - Header">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TJe-4b-FiZ">
+                                        <rect key="frame" x="62" y="10" width="126" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xmN-03-Ir7">
+                                        <rect key="frame" x="11" y="7" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt;"/>
+                                        <connections>
+                                            <action selector="btnBack:" destination="5ZZ-6x-716" eventType="touchUpInside" id="lwc-63-gOz"/>
+                                        </connections>
+                                    </button>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="gJt-8B-ztZ">
+                                        <rect key="frame" x="0.0" y="38" width="320" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fGS-bi-fk1">
+                                                <rect key="frame" x="20" y="4" width="78" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="PERSONAL"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="5li-HN-Vtq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="102" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MJY-ii-4mL">
+                                                <rect key="frame" x="118" y="4" width="100" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="CREDIT CARD"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="QuQ-NI-Ni0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="103" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z9Z-PF-5Gs">
+                                                <rect key="frame" x="238" y="4" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="PROFILE PICTURE"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="rIy-Bj-Sco"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="104" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vCj-TA-zce">
+                                                <rect key="frame" x="378" y="4" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="DRIVER'S LICENSE"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="faN-uu-vCq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="105" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mDK-Ix-Wjb">
+                                                <rect key="frame" x="518" y="4" width="142" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="TRUCK INFORMATION"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="Jpp-p8-3Qj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="106" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gru-mJ-Gw7" userLabel="INSURANCE">
+                                                <rect key="frame" x="680" y="4" width="180" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="INSURANCE INFORMATION"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="wMz-gH-iRh"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="107" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Ud-70-iw0">
+                                                <rect key="frame" x="880" y="4" width="112" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="TRUCK PICTURES"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="q0o-7M-Hfo"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" tag="108" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="my3-nW-vjQ">
+                                                <rect key="frame" x="1012" y="4" width="112" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="TRUCK SIZES"/>
+                                                <connections>
+                                                    <action selector="btnRegisterAction:" destination="5ZZ-6x-716" eventType="touchUpInside" id="TxY-kG-v8j"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rtY-oT-S5I">
+                                                <rect key="frame" x="20" y="36" width="78" height="2"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.93333333330000001" green="0.54117647059999996" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.93333333330000001" green="0.54117647059999996" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="oBa-DP-ySh">
+                                <rect key="frame" x="0.0" y="76" width="320" height="492"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="TPQ-y5-8JF" userLabel="View - Personal">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="492"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="401" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="First Name" textAlignment="natural" minimumFontSize="17" id="O0v-Af-Bi9">
+                                                <rect key="frame" x="25" y="23" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="8gS-vK-oYb"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="402" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" id="ChR-RA-07p">
+                                                <rect key="frame" x="25" y="63" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="LEU-8b-8Eu"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="403" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" id="Nsk-ha-s7C">
+                                                <rect key="frame" x="25" y="103" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="X08-py-Cb4"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="404" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="TyD-N7-Rnd">
+                                                <rect key="frame" x="26" y="142" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="qWs-en-XEs"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="405" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" id="3F5-Pc-cDb">
+                                                <rect key="frame" x="26" y="181" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="jAB-d7-6Re"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" tag="201" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mMV-4D-TUc">
+                                                <rect key="frame" x="129" y="231" width="60" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="btnNext:" destination="5ZZ-6x-716" eventType="touchUpInside" id="Sgm-1v-5a9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="zSF-IR-7bc" userLabel="View - Credit Card">
+                                        <rect key="frame" x="320" y="0.0" width="320" height="492"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" id="9N6-DI-rxj">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="406" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Full Name on card" textAlignment="natural" minimumFontSize="17" id="TfZ-Zd-Het">
+                                                        <rect key="frame" x="29" y="20" width="269" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="E7w-KP-ROs"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="407" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Credit Card Number" textAlignment="natural" minimumFontSize="17" id="SUb-lq-eBN">
+                                                        <rect key="frame" x="29" y="57" width="269" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="bUW-xv-8b4"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="408" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Address" textAlignment="natural" minimumFontSize="17" id="tgO-QU-sql">
+                                                        <rect key="frame" x="29" y="131" width="269" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="9lV-dq-HbO"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="409" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="City" textAlignment="natural" minimumFontSize="17" id="WAH-jY-ntq">
+                                                        <rect key="frame" x="30" y="169" width="130" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="O6y-ol-kLb"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="410" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="State" textAlignment="natural" minimumFontSize="17" id="fTc-l9-8Ad">
+                                                        <rect key="frame" x="168" y="169" width="130" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="y6N-Vp-WuH"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="411" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Country" textAlignment="natural" minimumFontSize="17" id="0Bb-l3-wdl">
+                                                        <rect key="frame" x="29" y="206" width="130" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="Kct-Lv-G5k"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="412" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Pincode" textAlignment="natural" minimumFontSize="17" id="LJN-Yc-XmT">
+                                                        <rect key="frame" x="167" y="206" width="130" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="g0l-gx-tRf"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="413" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Expiration (MM/YY)" textAlignment="natural" minimumFontSize="17" id="9P8-bK-Yg9">
+                                                        <rect key="frame" x="29" y="94" width="130" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="QBN-zJ-kVE"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="414" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="CVV Code" textAlignment="natural" minimumFontSize="17" id="ZIx-uS-aBm">
+                                                        <rect key="frame" x="168" y="94" width="130" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="5ZZ-6x-716" id="xVs-d3-b72"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button opaque="NO" tag="202" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QKE-Fb-dB6">
+                                                        <rect key="frame" x="130" y="268" width="60" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Next"/>
+                                                        <connections>
+                                                            <action selector="btnNext:" destination="5ZZ-6x-716" eventType="touchUpInside" id="fM5-Yf-cUD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="JBK-cr-Nql"/>
+                                                </connections>
+                                            </scrollView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="VHg-TL-nXW" userLabel="View - Profile PIcture">
+                                        <rect key="frame" x="640" y="0.0" width="320" height="492"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take Your Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6c5-Gm-WmO">
+                                                <rect key="frame" x="100" y="45" width="119" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" tag="301" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2mq-HC-43j">
+                                                <rect key="frame" x="67" y="74" width="185" height="153"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" tag="203" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jkt-D2-eYE">
+                                                <rect key="frame" x="129" y="295" width="60" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="btnNext:" destination="5ZZ-6x-716" eventType="touchUpInside" id="bz1-fG-iH4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="501" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SRb-dH-F3A">
+                                                <rect key="frame" x="113" y="252" width="93" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Capture"/>
+                                                <connections>
+                                                    <action selector="btnCapture:" destination="5ZZ-6x-716" eventType="touchUpInside" id="e3N-Nc-NSY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="qrj-VY-zmP" userLabel="View - Driver LIcense">
+                                        <rect key="frame" x="960" y="0.0" width="320" height="492"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" tag="302" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aRp-u1-is7">
+                                                <rect key="frame" x="67" y="170" width="185" height="157"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="415" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="License Issue Date" textAlignment="natural" minimumFontSize="17" id="12G-Yh-mey">
+                                                <rect key="frame" x="25" y="102" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="84q-WL-itC"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="416" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="License Expiry Date" textAlignment="natural" minimumFontSize="17" id="qaV-68-euZ">
+                                                <rect key="frame" x="25" y="65" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="vju-jk-Ez6"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="417" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Licesnse Number" textAlignment="natural" minimumFontSize="17" id="xOJ-BX-qkf">
+                                                <rect key="frame" x="25" y="27" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="Mr5-rf-N7m"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take your picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c20-lH-7bt">
+                                                <rect key="frame" x="25" y="140" width="127" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="204" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dsh-vG-DJ6">
+                                                <rect key="frame" x="130" y="388" width="60" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="btnNext:" destination="5ZZ-6x-716" eventType="touchUpInside" id="mBe-Ks-iAq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="502" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Zr-HS-mVf">
+                                                <rect key="frame" x="114" y="345" width="93" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Capture"/>
+                                                <connections>
+                                                    <action selector="btnCapture:" destination="5ZZ-6x-716" eventType="touchUpInside" id="g8I-DF-k68"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="dHf-kn-pNw" userLabel="View - Truck">
+                                        <rect key="frame" x="1280" y="0.0" width="320" height="492"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="418" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Registration Number" textAlignment="natural" minimumFontSize="17" id="u47-bG-Y0e">
+                                                <rect key="frame" x="25" y="27" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="DTq-wP-3uf"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="419" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="VIN Number" textAlignment="natural" minimumFontSize="17" id="mrV-GO-sTj">
+                                                <rect key="frame" x="25" y="65" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="JlW-C3-ufi"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="420" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Registered State" textAlignment="natural" minimumFontSize="17" id="iAe-wg-1Sw">
+                                                <rect key="frame" x="25" y="102" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="MkG-5Z-CmE"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Document Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tCc-Wo-ng7">
+                                                <rect key="frame" x="25" y="140" width="202" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" tag="303" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bCQ-v8-Z7X">
+                                                <rect key="frame" x="67" y="170" width="185" height="157"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" tag="503" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dgm-e5-bNu">
+                                                <rect key="frame" x="114" y="345" width="93" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Capture"/>
+                                                <connections>
+                                                    <action selector="btnCapture:" destination="5ZZ-6x-716" eventType="touchUpInside" id="ZlC-vO-XCz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="205" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="63k-A0-vWD">
+                                                <rect key="frame" x="130" y="388" width="60" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="btnNext:" destination="5ZZ-6x-716" eventType="touchUpInside" id="49V-Eg-gWf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="es6-yE-PQ9" userLabel="View - Insurance">
+                                        <rect key="frame" x="1600" y="0.0" width="320" height="492"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="421" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Policy Number" textAlignment="natural" minimumFontSize="17" id="acm-ml-6E2">
+                                                <rect key="frame" x="20" y="58" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="WST-wy-cmA"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="422" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Date of Expiry" textAlignment="natural" minimumFontSize="17" id="r7H-C9-TeR">
+                                                <rect key="frame" x="20" y="95" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="em9-ha-WdN"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="423" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Insurance Provider" textAlignment="natural" minimumFontSize="17" id="yWE-6c-2Nv">
+                                                <rect key="frame" x="20" y="20" width="269" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5ZZ-6x-716" id="l8u-kL-6gL"/>
+                                                </connections>
+                                            </textField>
+                                            <imageView userInteractionEnabled="NO" tag="304" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vc1-5D-acs">
+                                                <rect key="frame" x="62" y="163" width="185" height="157"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" tag="504" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yvE-6n-wGD">
+                                                <rect key="frame" x="109" y="338" width="93" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Capture"/>
+                                                <connections>
+                                                    <action selector="btnCapture:" destination="5ZZ-6x-716" eventType="touchUpInside" id="Z4Z-YX-P3f"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insurance Document Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fcU-IZ-t4R">
+                                                <rect key="frame" x="20" y="133" width="202" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="206" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BI8-mQ-zH9">
+                                                <rect key="frame" x="125" y="381" width="60" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <action selector="btnNext:" destination="5ZZ-6x-716" eventType="touchUpInside" id="mAH-wm-3n9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="5ZZ-6x-716" id="xSA-S5-obJ"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ihc-OQ-MoD"/>
+                    <connections>
+                        <outlet property="imgDocPic" destination="bCQ-v8-Z7X" id="Ah1-v7-nPn"/>
+                        <outlet property="imgDocPic2" destination="vc1-5D-acs" id="EUh-Xo-6Ax"/>
+                        <outlet property="imgProfile1" destination="2mq-HC-43j" id="B79-0e-yow"/>
+                        <outlet property="imgProfile2" destination="aRp-u1-is7" id="wnF-YL-qHw"/>
+                        <outlet property="lblSelectorLine" destination="rtY-oT-S5I" id="sCE-06-rT7"/>
+                        <outlet property="scrCreditCard" destination="9N6-DI-rxj" id="hAW-k4-xgG"/>
+                        <outlet property="scrDisplay" destination="oBa-DP-ySh" id="NnZ-aZ-M2b"/>
+                        <outlet property="scrPage" destination="gJt-8B-ztZ" id="I31-4K-R9X"/>
+                        <outlet property="txtAddress" destination="tgO-QU-sql" id="56s-v8-AJe"/>
+                        <outlet property="txtCardExpiry" destination="9P8-bK-Yg9" id="q50-E8-5zM"/>
+                        <outlet property="txtCardName" destination="TfZ-Zd-Het" id="Tkw-Nu-Rea"/>
+                        <outlet property="txtCardNumber" destination="SUb-lq-eBN" id="krU-j0-obD"/>
+                        <outlet property="txtCity" destination="WAH-jY-ntq" id="3C9-oS-hBV"/>
+                        <outlet property="txtCountry" destination="0Bb-l3-wdl" id="mz9-Fx-bxq"/>
+                        <outlet property="txtCvvCode" destination="ZIx-uS-aBm" id="Sy5-4A-sXu"/>
+                        <outlet property="txtDateOfExpiry" destination="r7H-C9-TeR" id="SbU-cM-IQh"/>
+                        <outlet property="txtEmail" destination="Nsk-ha-s7C" id="7Xb-ba-DtP"/>
+                        <outlet property="txtFirstName" destination="O0v-Af-Bi9" id="aTX-UD-X1s"/>
+                        <outlet property="txtInsurProvider" destination="yWE-6c-2Nv" id="tuS-p9-Ckk"/>
+                        <outlet property="txtLicenseExpiry" destination="qaV-68-euZ" id="dqA-0k-ZPU"/>
+                        <outlet property="txtLicenseIssue" destination="12G-Yh-mey" id="z2I-9V-cho"/>
+                        <outlet property="txtLicenseNumber" destination="xOJ-BX-qkf" id="LHl-JU-FxE"/>
+                        <outlet property="txtMobile" destination="3F5-Pc-cDb" id="48q-q2-JaF"/>
+                        <outlet property="txtPassword" destination="TyD-N7-Rnd" id="n5n-yL-8Fj"/>
+                        <outlet property="txtPincode" destination="LJN-Yc-XmT" id="t3s-5o-agK"/>
+                        <outlet property="txtPolicyNumber" destination="acm-ml-6E2" id="8Us-1e-SxX"/>
+                        <outlet property="txtRegNumber" destination="u47-bG-Y0e" id="AUq-Fc-nrb"/>
+                        <outlet property="txtRegisterdState" destination="iAe-wg-1Sw" id="XWh-NZ-spk"/>
+                        <outlet property="txtSecondName" destination="ChR-RA-07p" id="f6R-5Y-CZw"/>
+                        <outlet property="txtState" destination="fTc-l9-8Ad" id="c6b-rw-T8Z"/>
+                        <outlet property="txtVinNumber" destination="mrV-GO-sTj" id="gpg-AE-RUp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oW1-kB-sqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="1081"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="P3X-qs-KLj">
+            <objects>
+                <viewController storyboardIdentifier="homeStoryId" id="g1Y-In-FHj" customClass="HomeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r3u-21-JiX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Q25-Yv-wCF" userLabel="View - Header">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mBq-Ct-dfa">
+                                        <rect key="frame" x="62" y="19" width="126" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0ox-g0-FCX">
+                                        <rect key="frame" x="8" y="16" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="&lt;"/>
+                                        <connections>
+                                            <action selector="btnBack:" destination="g1Y-In-FHj" eventType="touchUpInside" id="umq-7a-Res"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37254901959999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Homepage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DfH-Na-e96">
+                                <rect key="frame" x="120" y="245" width="163" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KDC-Lp-j9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="1061"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gla-4s-jLk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="edN-yV-1vb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ezH-ml-jZq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Xst-vr-r2T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coe-RO-JtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="331"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back.png" width="480" height="800"/>
+    </resources>
+</document>
