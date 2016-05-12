@@ -24,13 +24,13 @@
     IBOutlet UITextField *txtCardNumber;
     IBOutlet UITextField *txtCardExpiry;
     IBOutlet UITextField *txtCvvCode;
-    IBOutlet UITextField *txtAddress;
-    IBOutlet UITextField *txtCity;
-    IBOutlet UITextField *txtState;
-    IBOutlet UITextField *txtCountry;
     IBOutlet UITextField *txtPincode;
-    IBOutlet UITextView *txtAddressView;
     IBOutlet UIScrollView *scrCreditCard;
+    IBOutlet UIScrollView *scrBankInformation;
+    IBOutlet UIButton *btnCreditCard;
+    IBOutlet UIButton *btnRadioChecking;
+    IBOutlet UIButton *btnSavingChecking;
+
     
     IBOutlet UITextField *txtLicenseNumber;
     IBOutlet UITextField *txtLicenseExpiry;
@@ -71,6 +71,8 @@
 - (IBAction)btnCapture:(UIButton *)sender;
 - (IBAction)btnSelectAgreement:(UIButton *)sender;
 - (IBAction)btnselectTruckImage:(UIButton *)sender;
+- (IBAction)btnSelectCardType:(UIButton *)sender;
+- (IBAction)btnSelectPaymentMethod:(UIButton *)sender;
 
 
 - (void)defaultProperties;

@@ -17,7 +17,8 @@
 {
     scrPage.contentSize = CGSizeMake(860.0, scrPage.contentSize.height);
     scrDisplay.contentSize = CGSizeMake(screenWidth*6, scrDisplay.frame.size.height);
-    scrCreditCard.contentSize = CGSizeMake(318.0, scrCreditCard.frame.size.height);
+    scrCreditCard.contentSize = CGSizeMake(scrCreditCard.frame.size.width, scrCreditCard.frame.size.height);
+    scrBankInformation.contentSize = CGSizeMake(scrBankInformation.frame.size.width, scrBankInformation.frame.size.height);
     scrPersonal.contentSize = CGSizeMake(scrPersonal.contentSize.width, scrPersonal.frame.size.height);
     
     screenWidth = [UIScreen mainScreen].bounds.size.width;
@@ -78,12 +79,22 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-   if (scrDisplay.contentOffset.x==screenWidth)
+   if (scrDisplay.contentOffset.x==screenWidth*2)
    {
-       CGRect scrollFrame = scrCreditCard.frame;
-       scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
-       scrCreditCard.frame = scrollFrame;
-       scrDisplay.scrollEnabled = NO;
+       if (!scrCreditCard.isHidden)
+       {
+           CGRect scrollFrame = scrCreditCard.frame;
+           scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
+           scrCreditCard.frame = scrollFrame;
+           scrDisplay.scrollEnabled = NO;
+       }
+       else
+       {
+           CGRect scrollFrame = scrBankInformation.frame;
+           scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
+           scrBankInformation.frame = scrollFrame;
+           scrDisplay.scrollEnabled = NO;
+       }
    }
     
     if (scrDisplay.contentOffset.x==0)
@@ -98,12 +109,22 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (scrDisplay.contentOffset.x==screenWidth)
+    if (scrDisplay.contentOffset.x==screenWidth*2)
     {
-        CGRect scrollFrame = scrCreditCard.frame;
-        scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
-        scrCreditCard.frame = scrollFrame;
-        scrDisplay.scrollEnabled = YES;
+        if (!scrCreditCard.isHidden)
+        {
+            CGRect scrollFrame = scrCreditCard.frame;
+            scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
+            scrCreditCard.frame = scrollFrame;
+            scrDisplay.scrollEnabled = YES;
+        }
+        else
+        {
+            CGRect scrollFrame = scrBankInformation.frame;
+            scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
+            scrBankInformation.frame = scrollFrame;
+            scrDisplay.scrollEnabled = YES;
+        }
     }
     
     if (scrDisplay.contentOffset.x==0)
@@ -117,16 +138,12 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    txtAddress.placeholder = @"";
 }
 
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if (textView.text.length == 0)
-    {
-        txtAddress.placeholder = @"Address";
-    }
+    
 }
 
 
@@ -509,12 +526,16 @@
     {
         lblHeader.text = @"Bank Information";
         showBankInfoScreen = YES;
+        scrCreditCard.hidden = true;
+        scrBankInformation.hidden = false;
         contentset = (sender.tag-200)*scrDisplay.frame.size.width;
     }
     else
     {
         lblHeader.text = @"Credit Card";
         showBankInfoScreen = NO;
+        scrCreditCard.hidden = false;
+        scrBankInformation.hidden = true;
         contentset = (sender.tag-500)*scrDisplay.frame.size.width;
     }
     
@@ -522,6 +543,61 @@
     [UIView animateWithDuration:0.5 animations:^{
         scrDisplay.contentOffset = CGPointMake(contentset, 0.0);
     }];
+}
+
+
+- (IBAction)btnSelectCardType:(UIButton *)sender
+{
+    UIAlertController *cardListController = [UIAlertController alertControllerWithTitle:@"Card Type" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *visaAction = [UIAlertAction actionWithTitle:@"Visa" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+        [btnCreditCard setTitle:@"Visa" forState:UIControlStateNormal];
+        [self dismissViewControllerAnimated:true completion:nil];
+
+    }];
+    
+    UIAlertAction *mastercardAction = [UIAlertAction actionWithTitle:@"MasterCard" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+        [btnCreditCard setTitle:@"MasterCard" forState:UIControlStateNormal];
+        [self dismissViewControllerAnimated:true completion:nil];
+
+    }];
+    
+    UIAlertAction *discovervisaAction = [UIAlertAction actionWithTitle:@"Discover" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+        [btnCreditCard setTitle:@"Discover" forState:UIControlStateNormal];
+        [self dismissViewControllerAnimated:true completion:nil];
+
+    }];
+    
+    UIAlertAction *americanexpressAction = [UIAlertAction actionWithTitle:@"American Express" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+        [btnCreditCard setTitle:@"American Express" forState:UIControlStateNormal];
+        [self dismissViewControllerAnimated:true completion:nil];
+    }];
+    
+    [cardListController addAction:visaAction];
+    [cardListController addAction:mastercardAction];
+    [cardListController addAction:discovervisaAction];
+    [cardListController addAction:americanexpressAction];
+    
+    [self presentViewController:cardListController animated:true completion:nil];
+}
+
+
+- (IBAction)btnSelectPaymentMethod:(UIButton *)sender
+{
+    if (sender.tag == 901)
+    {
+        btnRadioChecking.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0];
+        btnSavingChecking.backgroundColor = [UIColor whiteColor];
+    }
+    else
+    {
+        btnSavingChecking.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0];
+        btnRadioChecking.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 
@@ -569,6 +645,21 @@
         txtTemp.layer.cornerRadius = 5.0;
         txtTemp.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
     }
+    
+    btnCreditCard.layer.masksToBounds = true;
+    btnCreditCard.layer.borderWidth = 1.0;
+    btnCreditCard.layer.cornerRadius = 5.0;
+    btnCreditCard.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
+    
+    btnRadioChecking.layer.masksToBounds = true;
+    btnRadioChecking.layer.cornerRadius = 8.0;
+    btnRadioChecking.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
+    btnRadioChecking.layer.borderWidth = 1.0;
+
+    btnSavingChecking.layer.masksToBounds = true;
+    btnSavingChecking.layer.cornerRadius = 8.0;
+    btnSavingChecking.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
+    btnSavingChecking.layer.borderWidth = 1.0;
 }
 
 
@@ -624,13 +715,7 @@
             {
                 if (i!=408)
                     conditionPass = YES;
-                else
-                {
-                    if (txtAddressView.text.length==0)
-                    {
-                        conditionPass = YES;
-                    }
-                }
+    
                 break;
             }
         }
