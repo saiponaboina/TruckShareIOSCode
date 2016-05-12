@@ -18,12 +18,29 @@
     scrPage.contentSize = CGSizeMake(860.0, scrPage.contentSize.height);
     scrDisplay.contentSize = CGSizeMake(screenWidth*6, scrDisplay.frame.size.height);
     scrCreditCard.contentSize = CGSizeMake(318.0, scrCreditCard.frame.size.height);
+    scrPersonal.contentSize = CGSizeMake(scrPersonal.contentSize.width, scrPersonal.frame.size.height);
     
     screenWidth = [UIScreen mainScreen].bounds.size.width;
+
+    lblHeader.text = @"Registration";
+    btnCheckedOutlet.layer.masksToBounds = YES;
+    btnCheckedOutlet.layer.borderColor = [UIColor blackColor].CGColor;
+    btnCheckedOutlet.layer.borderWidth = 1.0;
+    btnCheckedOutlet.selected = NO;
+    
+    txtTruckDimension.layer.masksToBounds = YES;
+    txtTruckDimension.layer.borderColor = [UIColor blackColor].CGColor;
+    txtTruckDimension.layer.borderWidth = 1.0;
+
 
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
 }
 
 
@@ -68,6 +85,13 @@
        scrCreditCard.frame = scrollFrame;
        scrDisplay.scrollEnabled = NO;
    }
+    
+    if (scrDisplay.contentOffset.x==0)
+    {
+        CGRect scrollFrame = scrPersonal.frame;
+        scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
+        scrPersonal.frame = scrollFrame;
+    }
 }
 
 
@@ -81,9 +105,29 @@
         scrCreditCard.frame = scrollFrame;
         scrDisplay.scrollEnabled = YES;
     }
+    
+    if (scrDisplay.contentOffset.x==0)
+    {
+        CGRect scrollFrame = scrPersonal.frame;
+        scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
+        scrPersonal.frame = scrollFrame;
+    }
 }
 
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    txtAddress.placeholder = @"";
+}
+
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if (textView.text.length == 0)
+    {
+        txtAddress.placeholder = @"Address";
+    }
+}
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -134,7 +178,7 @@
             return NO;
         }
     }
-    else if (textField == txtMobile || textField == txtCardNumber || textField == txtCvvCode || textField == txtPincode || textField == txtLicenseNumber || textField==txtRegNumber)
+    else if (textField == txtMobile || textField == txtCardNumber || textField == txtCvvCode || textField == txtPincode || textField == txtLicenseNumber || textField==txtRegNumber || textField==txtSocialSecurityNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
         
@@ -165,9 +209,9 @@
 {
     scrDisplay.contentOffset = CGPointMake(screenNumber*screenWidth, scrDisplay.contentOffset.y);
     
-    if (scrDisplay.contentOffset.x == (2*screenWidth))
+    if (scrDisplay.contentOffset.x == (3*screenWidth))
     {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:203];
+        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:204];
         UIButton *btnTemp2 = (UIButton *)[scrPage viewWithTag:104];
     
         imgProfile1.image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -176,9 +220,9 @@
         [btnTemp2 setEnabled:TRUE];
     }
     
-    if (scrDisplay.contentOffset.x == (3*screenWidth))
+    if (scrDisplay.contentOffset.x == (5*screenWidth))
     {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:204];
+        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:206];
         UIButton *btnTemp2 = (UIButton *)[scrPage viewWithTag:105];
         
         imgProfile2.image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -196,9 +240,9 @@
         }
     }
     
-    if (scrDisplay.contentOffset.x == (4*screenWidth))
+    if (scrDisplay.contentOffset.x == (6*screenWidth))
     {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:205];
+        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:207];
         UIButton *btnTemp2 = (UIButton *)[scrPage viewWithTag:106];
         
         imgDocPic.image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -216,9 +260,9 @@
         }
     }
     
-    if (scrDisplay.contentOffset.x == (5*screenWidth))
+    if (scrDisplay.contentOffset.x == (7*screenWidth))
     {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:206];
+        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:208];
 //        UIButton *btnTemp2 = (UIButton *)[scrDisplay viewWithTag:107];
         
         imgDocPic2.image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -258,9 +302,10 @@
 - (IBAction)btnRegisterAction:(UIButton *)sender
 {
     int tagVal = (int)sender.tag;
-    float contentset = (tagVal-101)*scrDisplay.frame.size.width;
     
-    [self setSelectorPosition:sender];
+    float contentset = (tagVal-200)*scrDisplay.frame.size.width;
+    
+//    [self setSelectorPosition:sender];
     
       [UIView animateWithDuration:0.5 animations:^{
           scrDisplay.contentOffset = CGPointMake(contentset, 0.0);
@@ -301,31 +346,109 @@
         if (txtMobile.text.length!=10)
         {
             [self showAlert:@"Mobile number should contain 10 digits."];
+            return;
             
         }
         else if (![self validateEmail:txtEmail.text])
         {
             [self showAlert:@"Invalid email id."];
+            return;
+        }
+        else if (![txtPassword.text isEqualToString:txtConfirmPassword.text])
+        {
+            [self showAlert:@"Password not matched."];
+            return;
         }
         else
         {
-            UIButton *btnTemp = (UIButton *)[scrPage viewWithTag:sender.tag-99];
-            [self btnRegisterAction:btnTemp];
+            [self btnRegisterAction:sender];
+            lblHeader.text = @"";
+            return;
         }
     }
-    else if (sender.tag == 206)
-    {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Truck Share" message:@"Resgistration successfully completed." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-        [alert addAction:alertAction];
-        [self.navigationController presentViewController:alert animated:YES completion:nil];
-    }
+    
+    
+//    else if (sender.tag == 206)
+//    {
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Truck Share" message:@"Resgistration successfully completed." preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }];
+//        [alert addAction:alertAction];
+//        [self.navigationController presentViewController:alert animated:YES completion:nil];
+//    }
     else
     {
-        UIButton *btnTemp = (UIButton *)[scrPage viewWithTag:sender.tag-99];
-        [self btnRegisterAction:btnTemp];
+        UIButton *btnTemp = (UIButton *)[scrPage viewWithTag:sender.tag];
+        [self btnRegisterAction:sender];
+    }
+    
+    switch (sender.tag)
+    {
+        case 203:   lblHeader.text = @"Profile Picture";
+            break;
+            
+        case 204:   lblHeader.text = @"Background Check Info";
+            break;
+            
+        case 205:   lblHeader.text = @"Driver's License";
+            break;
+            
+        case 206:   lblHeader.text = @"Truck Information";
+            break;
+            
+        case 207:   lblHeader.text = @"Insurance Information";
+            break;
+            
+        case 208:   lblHeader.text = @"Truck Pictures";
+            break;
+            
+        case 209:   lblHeader.text = @"Truck Size";
+            break;
+            
+        case 210:   lblHeader.text = @"Registration";
+            break;
+            
+    }
+
+}
+
+
+- (IBAction)btnPrevious:(UIButton *)sender
+{
+    int tagVal = (int)sender.tag;
+    float contentset = (tagVal-502)*scrDisplay.frame.size.width;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        scrDisplay.contentOffset = CGPointMake(contentset, 0.0);
+    }];
+
+    switch (sender.tag)
+    {
+        case 503:   lblHeader.text = @"";
+            break;
+            
+        case 504:   lblHeader.text = @"Registration";
+            break;
+            
+        case 505:   lblHeader.text = @"Profile Picture";
+            break;
+            
+        case 506:   lblHeader.text = @"Background Check Info";
+            break;
+            
+        case 507:   lblHeader.text = @"Driver's License";
+            break;
+            
+        case 508:   lblHeader.text = @"Truck Information";
+            break;
+            
+        case 509:   lblHeader.text = @"Insurance Information";
+            break;
+            
+        case 510:   lblHeader.text = @"Truck Pictures";
+            break;
+            
     }
 }
 
@@ -359,6 +482,60 @@
     
     [self presentViewController:actionsheet animated:YES completion:nil];
 }
+
+
+- (IBAction)btnSelectAgreement:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+
+    if (sender.selected)
+    {
+        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:205];
+        
+        [btnTemp setEnabled:YES];
+        [sender setBackgroundColor:[UIColor redColor]];
+    }
+    else
+    {
+        [sender setBackgroundColor:[UIColor clearColor]];
+    }
+}
+
+
+- (IBAction)btnSelectYesNo:(UIButton *)sender
+{
+    float contentset = 0;
+    if (sender.tag == 202)
+    {
+        lblHeader.text = @"Bank Information";
+        showBankInfoScreen = YES;
+        contentset = (sender.tag-200)*scrDisplay.frame.size.width;
+    }
+    else
+    {
+        lblHeader.text = @"Credit Card";
+        showBankInfoScreen = NO;
+        contentset = (sender.tag-500)*scrDisplay.frame.size.width;
+    }
+    
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        scrDisplay.contentOffset = CGPointMake(contentset, 0.0);
+    }];
+}
+
+
+- (IBAction)btnselectTruckImage:(UIButton *)sender
+{
+    
+}
+
+
+
+
+
+
+
 
 
 
@@ -442,14 +619,23 @@
         for (int i=406; i<=414; i++)
         {
             UITextField *txtTemp = (UITextField *)[scrDisplay viewWithTag:i];
+            
             if (txtTemp.text.length == 0)
             {
-                conditionPass = YES;
+                if (i!=408)
+                    conditionPass = YES;
+                else
+                {
+                    if (txtAddressView.text.length==0)
+                    {
+                        conditionPass = YES;
+                    }
+                }
                 break;
             }
         }
     }
-    else if (scrDisplay.contentOffset.x==screenWidth*3)
+    else if (scrDisplay.contentOffset.x==screenWidth*5)
     {
         if (txtLicenseNumber.text.length==0 ||
             txtLicenseExpiry.text.length==0 ||
@@ -459,7 +645,7 @@
             conditionPass = YES;
         }
     }
-    else if (scrDisplay.contentOffset.x==screenWidth*4)
+    else if (scrDisplay.contentOffset.x==screenWidth*6)
     {
         if (txtRegNumber.text.length==0 ||
             txtVinNumber.text.length==0 ||
@@ -469,7 +655,7 @@
             conditionPass = YES;
         }
     }
-    else if (scrDisplay.contentOffset.x==screenWidth*5)
+    else if (scrDisplay.contentOffset.x==screenWidth*7)
     {
         if (txtInsurProvider.text.length==0 ||
             txtPolicyNumber.text.length==0 ||

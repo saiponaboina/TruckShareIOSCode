@@ -50,6 +50,26 @@
 
 
 
+#pragma mark ==DELEGATE METHODS==
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark==ACTIONS==
 - (IBAction)btnLogin:(UIButton *)sender
 {

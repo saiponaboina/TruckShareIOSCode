@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface RegisterViewController : UIViewController<UIScrollViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 {
     IBOutlet UIScrollView *scrPage;
     IBOutlet UIScrollView *scrDisplay;
@@ -17,6 +17,7 @@
     IBOutlet UITextField *txtSecondName;
     IBOutlet UITextField *txtEmail;
     IBOutlet UITextField *txtPassword;
+    IBOutlet UITextField *txtConfirmPassword;
     IBOutlet UITextField *txtMobile;
     
     IBOutlet UITextField *txtCardName;
@@ -28,6 +29,7 @@
     IBOutlet UITextField *txtState;
     IBOutlet UITextField *txtCountry;
     IBOutlet UITextField *txtPincode;
+    IBOutlet UITextView *txtAddressView;
     IBOutlet UIScrollView *scrCreditCard;
     
     IBOutlet UITextField *txtLicenseNumber;
@@ -47,15 +49,28 @@
     
     IBOutlet UIImageView *imgProfile1;
     
+    IBOutlet UIScrollView *scrPersonal;
+    IBOutlet UIScrollView *scrCredit;
+    IBOutlet UILabel *lblHeader;
+    
+    IBOutlet UITextField *txtSocialSecurityNumber;
+    IBOutlet UIButton *btnCheckedOutlet;
+    
+    IBOutlet UITextView *txtTruckDimension;
+    
     
     CGFloat screenWidth;
     CGFloat screenNumber;
+    BOOL showBankInfoScreen;
 }
 
 - (IBAction)btnRegisterAction:(UIButton *)sender;
 - (IBAction)btnBack:(UIButton *)sender;
 - (IBAction)btnNext:(UIButton *)sender;
+- (IBAction)btnPrevious:(UIButton *)sender;
 - (IBAction)btnCapture:(UIButton *)sender;
+- (IBAction)btnSelectAgreement:(UIButton *)sender;
+- (IBAction)btnselectTruckImage:(UIButton *)sender;
 
 
 - (void)defaultProperties;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3849911C3AD14600E9800E /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3849901C3AD14600E9800E /* ForgotPasswordViewController.m */; };
 		0DDE9F701C341E59007160CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F6F1C341E59007160CB /* main.m */; };
 		0DDE9F731C341E59007160CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F721C341E59007160CB /* AppDelegate.m */; };
 		0DDE9F761C341E59007160CB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F751C341E59007160CB /* ViewController.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D38498F1C3AD14600E9800E /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		0D3849901C3AD14600E9800E /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		0DDE9F6B1C341E59007160CB /* TruckShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DDE9F6F1C341E59007160CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DDE9F711C341E59007160CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 				0DDE9F881C3435A5007160CB /* HomeViewController.m */,
 				0DDE9F8E1C3442C0007160CB /* RegisterViewController.h */,
 				0DDE9F8F1C3442C0007160CB /* RegisterViewController.m */,
+				0D38498F1C3AD14600E9800E /* ForgotPasswordViewController.h */,
+				0D3849901C3AD14600E9800E /* ForgotPasswordViewController.m */,
 				0DDE9F7A1C341E59007160CB /* Assets.xcassets */,
 				0DDE9F7C1C341E59007160CB /* LaunchScreen.storyboard */,
 				0DDE9F7F1C341E59007160CB /* Info.plist */,
@@ -142,6 +147,7 @@
 				TargetAttributes = {
 					0DDE9F6A1C341E59007160CB = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = NH3AHRYEZ3;
 					};
 				};
 			};
@@ -183,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3849911C3AD14600E9800E /* ForgotPasswordViewController.m in Sources */,
 				0DDE9F901C3442C0007160CB /* RegisterViewController.m in Sources */,
 				0DDE9F761C341E59007160CB /* ViewController.m in Sources */,
 				0DDE9F731C341E59007160CB /* AppDelegate.m in Sources */,
@@ -299,12 +306,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Parth Patel (RTW72YXFJT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sai Kumar PONABOINA (6E3ZAK74VX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sai Kumar PONABOINA (6E3ZAK74VX)";
 				INFOPLIST_FILE = TruckShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.indeep.TruckShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.indra.TruckShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "190d110f-37e4-48a8-9338-7cdda427ec2b";
+				PROVISIONING_PROFILE = "6249211b-d1eb-49c4-8f10-188c7e4a9569";
 			};
 			name = Debug;
 		};
@@ -312,12 +320,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Parth Patel (RTW72YXFJT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sai Kumar PONABOINA (6E3ZAK74VX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sai Kumar PONABOINA (6E3ZAK74VX)";
 				INFOPLIST_FILE = TruckShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.indeep.TruckShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.indra.TruckShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "190d110f-37e4-48a8-9338-7cdda427ec2b";
+				PROVISIONING_PROFILE = "6249211b-d1eb-49c4-8f10-188c7e4a9569";
 			};
 			name = Release;
 		};
@@ -340,6 +349,7 @@
 				0DDE9F841C341E59007160CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
