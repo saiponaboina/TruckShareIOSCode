@@ -17,9 +17,7 @@
 {
     scrPage.contentSize = CGSizeMake(860.0, scrPage.contentSize.height);
     scrDisplay.contentSize = CGSizeMake(screenWidth*6, scrDisplay.frame.size.height);
-    scrCreditCard.contentSize = CGSizeMake(scrCreditCard.frame.size.width, scrCreditCard.frame.size.height);
-    scrBankInformation.contentSize = CGSizeMake(scrBankInformation.frame.size.width, scrBankInformation.frame.size.height);
-    scrPersonal.contentSize = CGSizeMake(scrPersonal.contentSize.width, scrPersonal.frame.size.height);
+   
     
     screenWidth = [UIScreen mainScreen].bounds.size.width;
 
@@ -77,63 +75,6 @@
 }
 
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-   if (scrDisplay.contentOffset.x==screenWidth*2)
-   {
-       if (!scrCreditCard.isHidden)
-       {
-           CGRect scrollFrame = scrCreditCard.frame;
-           scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
-           scrCreditCard.frame = scrollFrame;
-           scrDisplay.scrollEnabled = NO;
-       }
-       else
-       {
-           CGRect scrollFrame = scrBankInformation.frame;
-           scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
-           scrBankInformation.frame = scrollFrame;
-           scrDisplay.scrollEnabled = NO;
-       }
-   }
-    
-    if (scrDisplay.contentOffset.x==0)
-    {
-        CGRect scrollFrame = scrPersonal.frame;
-        scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76-216-20;
-        scrPersonal.frame = scrollFrame;
-    }
-}
-
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if (scrDisplay.contentOffset.x==screenWidth*2)
-    {
-        if (!scrCreditCard.isHidden)
-        {
-            CGRect scrollFrame = scrCreditCard.frame;
-            scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
-            scrCreditCard.frame = scrollFrame;
-            scrDisplay.scrollEnabled = YES;
-        }
-        else
-        {
-            CGRect scrollFrame = scrBankInformation.frame;
-            scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
-            scrBankInformation.frame = scrollFrame;
-            scrDisplay.scrollEnabled = YES;
-        }
-    }
-    
-    if (scrDisplay.contentOffset.x==0)
-    {
-        CGRect scrollFrame = scrPersonal.frame;
-        scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
-        scrPersonal.frame = scrollFrame;
-    }
-}
 
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -176,26 +117,7 @@
 {
 
     [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
-
-    if(textField == txtFirstName || textField == txtSecondName)
-    {
-        NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"] invertedSet] invertedSet];
-        
-        if ([string isEqualToString:@""])
-        {
-            return YES;
-        }
-        
-        if([string rangeOfCharacterFromSet:validCharSet].location != NSNotFound)
-        {
-            return YES;
-        }
-        else
-        {
-            return NO;
-        }
-    }
-    else if (textField == txtMobile || textField == txtCardNumber || textField == txtCvvCode || textField == txtPincode || textField == txtLicenseNumber || textField==txtRegNumber || textField==txtSocialSecurityNumber)
+    if  (textField == txtLicenseNumber || textField==txtRegNumber || textField==txtSocialSecurityNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
         
@@ -360,28 +282,6 @@
 {
     if (sender.tag == 201)
     {
-        if (txtMobile.text.length!=10)
-        {
-            [self showAlert:@"Mobile number should contain 10 digits."];
-            return;
-            
-        }
-        else if (![self validateEmail:txtEmail.text])
-        {
-            [self showAlert:@"Invalid email id."];
-            return;
-        }
-        else if (![txtPassword.text isEqualToString:txtConfirmPassword.text])
-        {
-            [self showAlert:@"Password not matched."];
-            return;
-        }
-        else
-        {
-            [self btnRegisterAction:sender];
-            lblHeader.text = @"";
-            return;
-        }
     }
     
     
@@ -519,86 +419,8 @@
 }
 
 
-- (IBAction)btnSelectYesNo:(UIButton *)sender
-{
-    float contentset = 0;
-    if (sender.tag == 202)
-    {
-        lblHeader.text = @"Bank Information";
-        showBankInfoScreen = YES;
-        scrCreditCard.hidden = true;
-        scrBankInformation.hidden = false;
-        contentset = (sender.tag-200)*scrDisplay.frame.size.width;
-    }
-    else
-    {
-        lblHeader.text = @"Credit Card";
-        showBankInfoScreen = NO;
-        scrCreditCard.hidden = false;
-        scrBankInformation.hidden = true;
-        contentset = (sender.tag-500)*scrDisplay.frame.size.width;
-    }
-    
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        scrDisplay.contentOffset = CGPointMake(contentset, 0.0);
-    }];
-}
 
 
-- (IBAction)btnSelectCardType:(UIButton *)sender
-{
-    UIAlertController *cardListController = [UIAlertController alertControllerWithTitle:@"Card Type" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *visaAction = [UIAlertAction actionWithTitle:@"Visa" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        [btnCreditCard setTitle:@"Visa" forState:UIControlStateNormal];
-        [self dismissViewControllerAnimated:true completion:nil];
-
-    }];
-    
-    UIAlertAction *mastercardAction = [UIAlertAction actionWithTitle:@"MasterCard" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        [btnCreditCard setTitle:@"MasterCard" forState:UIControlStateNormal];
-        [self dismissViewControllerAnimated:true completion:nil];
-
-    }];
-    
-    UIAlertAction *discovervisaAction = [UIAlertAction actionWithTitle:@"Discover" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        [btnCreditCard setTitle:@"Discover" forState:UIControlStateNormal];
-        [self dismissViewControllerAnimated:true completion:nil];
-
-    }];
-    
-    UIAlertAction *americanexpressAction = [UIAlertAction actionWithTitle:@"American Express" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        
-        [btnCreditCard setTitle:@"American Express" forState:UIControlStateNormal];
-        [self dismissViewControllerAnimated:true completion:nil];
-    }];
-    
-    [cardListController addAction:visaAction];
-    [cardListController addAction:mastercardAction];
-    [cardListController addAction:discovervisaAction];
-    [cardListController addAction:americanexpressAction];
-    
-    [self presentViewController:cardListController animated:true completion:nil];
-}
-
-
-- (IBAction)btnSelectPaymentMethod:(UIButton *)sender
-{
-    if (sender.tag == 901)
-    {
-        btnRadioChecking.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0];
-        btnSavingChecking.backgroundColor = [UIColor whiteColor];
-    }
-    else
-    {
-        btnSavingChecking.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0];
-        btnRadioChecking.backgroundColor = [UIColor whiteColor];
-    }
-}
 
 
 - (IBAction)btnselectTruckImage:(UIButton *)sender
@@ -645,21 +467,7 @@
         txtTemp.layer.cornerRadius = 5.0;
         txtTemp.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
     }
-    
-    btnCreditCard.layer.masksToBounds = true;
-    btnCreditCard.layer.borderWidth = 1.0;
-    btnCreditCard.layer.cornerRadius = 5.0;
-    btnCreditCard.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
-    
-    btnRadioChecking.layer.masksToBounds = true;
-    btnRadioChecking.layer.cornerRadius = 8.0;
-    btnRadioChecking.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
-    btnRadioChecking.layer.borderWidth = 1.0;
 
-    btnSavingChecking.layer.masksToBounds = true;
-    btnSavingChecking.layer.cornerRadius = 8.0;
-    btnSavingChecking.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
-    btnSavingChecking.layer.borderWidth = 1.0;
 }
 
 
@@ -675,37 +483,14 @@
 }
 
 
-- (BOOL)checkValidation
-{
-    if (txtEmail.text.length==0 ||
-        txtFirstName.text.length==0 ||
-        txtSecondName.text.length==0 ||
-        txtPassword.text.length==0 ||
-        txtMobile.text.length==0)
-    {
-        return NO;
-    }
-    
-    return YES;
-}
+
 
 
 
 - (BOOL)isMandatoryFieldEmpty
 {
     BOOL conditionPass = NO;
-    if (scrDisplay.contentOffset.x==0.0)
-    {
-        if (txtEmail.text.length==0 ||
-            txtFirstName.text.length==0 ||
-            txtSecondName.text.length==0 ||
-            txtPassword.text.length==0 ||
-            txtMobile.text.length==0)
-        {
-            conditionPass = YES;
-        }
-    }
-    else if (scrDisplay.contentOffset.x==screenWidth)
+    if (scrDisplay.contentOffset.x==screenWidth)
     {
         for (int i=406; i<=414; i++)
         {
@@ -752,14 +537,6 @@
     }
     
     return conditionPass;
-}
-
-
-- (BOOL) validateEmail: (NSString *) email
-{
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:email];
 }
 
 

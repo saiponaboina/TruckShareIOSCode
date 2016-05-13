@@ -13,23 +13,9 @@
     IBOutlet UIScrollView *scrPage;
     IBOutlet UIScrollView *scrDisplay;
     IBOutlet UILabel *lblSelectorLine;
-    IBOutlet UITextField *txtFirstName;
-    IBOutlet UITextField *txtSecondName;
-    IBOutlet UITextField *txtEmail;
-    IBOutlet UITextField *txtPassword;
-    IBOutlet UITextField *txtConfirmPassword;
-    IBOutlet UITextField *txtMobile;
+
     
-    IBOutlet UITextField *txtCardName;
-    IBOutlet UITextField *txtCardNumber;
-    IBOutlet UITextField *txtCardExpiry;
-    IBOutlet UITextField *txtCvvCode;
-    IBOutlet UITextField *txtPincode;
-    IBOutlet UIScrollView *scrCreditCard;
-    IBOutlet UIScrollView *scrBankInformation;
-    IBOutlet UIButton *btnCreditCard;
-    IBOutlet UIButton *btnRadioChecking;
-    IBOutlet UIButton *btnSavingChecking;
+
 
     
     IBOutlet UITextField *txtLicenseNumber;
@@ -49,7 +35,6 @@
     
     IBOutlet UIImageView *imgProfile1;
     
-    IBOutlet UIScrollView *scrPersonal;
     IBOutlet UIScrollView *scrCredit;
     IBOutlet UILabel *lblHeader;
     
@@ -71,7 +56,6 @@
 - (IBAction)btnCapture:(UIButton *)sender;
 - (IBAction)btnSelectAgreement:(UIButton *)sender;
 - (IBAction)btnselectTruckImage:(UIButton *)sender;
-- (IBAction)btnSelectCardType:(UIButton *)sender;
 - (IBAction)btnSelectPaymentMethod:(UIButton *)sender;
 
 

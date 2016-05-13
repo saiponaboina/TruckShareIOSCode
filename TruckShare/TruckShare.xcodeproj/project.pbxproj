@@ -18,6 +18,8 @@
 		0DDE9F891C3435A5007160CB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F881C3435A5007160CB /* HomeViewController.m */; };
 		0DDE9F8D1C343D1A007160CB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDE9F8C1C343D1A007160CB /* back.png */; };
 		0DDE9F901C3442C0007160CB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F8F1C3442C0007160CB /* RegisterViewController.m */; };
+		1833F6E31CE6370500A50B72 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833F6E21CE6370500A50B72 /* UserInfoViewController.m */; };
+		1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,10 @@
 		0DDE9F8C1C343D1A007160CB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0DDE9F8E1C3442C0007160CB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0DDE9F8F1C3442C0007160CB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		1833F6E11CE6370500A50B72 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		1833F6E21CE6370500A50B72 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		1833F6E51CE639D900A50B72 /* PaymentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentInfoViewController.h; sourceTree = "<group>"; };
+		1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 		0DDE9F6D1C341E59007160CB /* TruckShare */ = {
 			isa = PBXGroup;
 			children = (
+				1833F6E41CE6370A00A50B72 /* Registration */,
 				0DDE9F711C341E59007160CB /* AppDelegate.h */,
 				0DDE9F721C341E59007160CB /* AppDelegate.m */,
 				0DDE9F771C341E59007160CB /* Main.storyboard */,
@@ -114,6 +121,17 @@
 				0DDE9F8C1C343D1A007160CB /* back.png */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		1833F6E41CE6370A00A50B72 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				1833F6E11CE6370500A50B72 /* UserInfoViewController.h */,
+				1833F6E21CE6370500A50B72 /* UserInfoViewController.m */,
+				1833F6E51CE639D900A50B72 /* PaymentInfoViewController.h */,
+				1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */,
+			);
+			name = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +212,9 @@
 				0DDE9F761C341E59007160CB /* ViewController.m in Sources */,
 				0DDE9F731C341E59007160CB /* AppDelegate.m in Sources */,
 				0DDE9F701C341E59007160CB /* main.m in Sources */,
+				1833F6E31CE6370500A50B72 /* UserInfoViewController.m in Sources */,
 				0DDE9F891C3435A5007160CB /* HomeViewController.m in Sources */,
+				1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
