@@ -17,12 +17,20 @@
     IBOutlet UITextField *txtCardExpiry;
     IBOutlet UITextField *txtCvvCode;
     IBOutlet UITextField *txtPincode;
+    IBOutlet UITextField *txtAccountName;
+    IBOutlet UITextField *txtBankRoutNumber;
+    IBOutlet UITextField *txtBankAcNumber;
+    IBOutlet UITextField *txtConfirmAcNumber;
+
+
     IBOutlet UIScrollView *scrCreditCard;
     IBOutlet UIScrollView *scrBankInformation;
     IBOutlet UIButton *btnCreditCard;
     IBOutlet UIButton *btnRadioChecking;
     IBOutlet UIButton *btnSavingChecking;
     IBOutlet UIButton *btnNextOutlet;
+    
+    BOOL isCreditCardValid;
 }
 
 - (IBAction)btnSelectCardType:(UIButton *)sender;

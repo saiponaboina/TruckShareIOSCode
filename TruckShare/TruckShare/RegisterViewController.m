@@ -22,10 +22,7 @@
     screenWidth = [UIScreen mainScreen].bounds.size.width;
 
     lblHeader.text = @"Registration";
-    btnCheckedOutlet.layer.masksToBounds = YES;
-    btnCheckedOutlet.layer.borderColor = [UIColor blackColor].CGColor;
-    btnCheckedOutlet.layer.borderWidth = 1.0;
-    btnCheckedOutlet.selected = NO;
+
     
     txtTruckDimension.layer.masksToBounds = YES;
     txtTruckDimension.layer.borderColor = [UIColor blackColor].CGColor;
@@ -75,19 +72,6 @@
 }
 
 
-
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-}
-
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    
-}
-
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     if (scrollView==scrDisplay)
@@ -117,7 +101,7 @@
 {
 
     [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
-    if  (textField == txtLicenseNumber || textField==txtRegNumber || textField==txtSocialSecurityNumber)
+    if  (textField == txtLicenseNumber || textField==txtRegNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
         
@@ -147,17 +131,6 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     scrDisplay.contentOffset = CGPointMake(screenNumber*screenWidth, scrDisplay.contentOffset.y);
-    
-    if (scrDisplay.contentOffset.x == (3*screenWidth))
-    {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:204];
-        UIButton *btnTemp2 = (UIButton *)[scrPage viewWithTag:104];
-    
-        imgProfile1.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        [picker dismissViewControllerAnimated:YES completion:nil];
-        [btnTemp setEnabled:TRUE];
-        [btnTemp2 setEnabled:TRUE];
-    }
     
     if (scrDisplay.contentOffset.x == (5*screenWidth))
     {
@@ -401,22 +374,7 @@
 }
 
 
-- (IBAction)btnSelectAgreement:(UIButton *)sender
-{
-    sender.selected = !sender.selected;
 
-    if (sender.selected)
-    {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:205];
-        
-        [btnTemp setEnabled:YES];
-        [sender setBackgroundColor:[UIColor redColor]];
-    }
-    else
-    {
-        [sender setBackgroundColor:[UIColor clearColor]];
-    }
-}
 
 
 

@@ -33,13 +33,10 @@
     IBOutlet UITextField *txtDateOfExpiry;
     IBOutlet UIImageView *imgDocPic2;
     
-    IBOutlet UIImageView *imgProfile1;
     
     IBOutlet UIScrollView *scrCredit;
     IBOutlet UILabel *lblHeader;
     
-    IBOutlet UITextField *txtSocialSecurityNumber;
-    IBOutlet UIButton *btnCheckedOutlet;
     
     IBOutlet UITextView *txtTruckDimension;
     

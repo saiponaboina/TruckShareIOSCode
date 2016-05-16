@@ -7,7 +7,7 @@
 //
 
 #import "PaymentInfoViewController.h"
-
+#import "Luhn.h"
 @interface PaymentInfoViewController ()
 
 @end
@@ -24,6 +24,11 @@
     [self defaultProperties];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    isCreditCardValid = false;
+}
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -94,14 +99,47 @@
         scrollFrame.size.height = [UIScreen mainScreen].bounds.size.height-76;
         scrBankInformation.frame = scrollFrame;
     }
+    
+    if (textField == txtCardNumber)
+    {
+        BOOL isValid = [Luhn validateString:textField.text];
+        
+        if (isValid)
+        {
+            isCreditCardValid = true;
+        }
+        else
+        {
+            isCreditCardValid = false;
+            [self showAlert:@"Invalid credit card number"];
+        }
+    }
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
-    if  (textField == txtCardNumber || textField == txtCvvCode || textField == txtPincode)
+    if  (textField == txtCardNumber || textField == txtCvvCode || textField == txtPincode || textField == txtBankAcNumber || textField == txtConfirmAcNumber || textField == txtBankRoutNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
+        
+        if ([string isEqualToString:@""])
+        {
+            return YES;
+        }
+        
+        if([string rangeOfCharacterFromSet:validCharSet].location != NSNotFound)
+        {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    else if (textField == txtAccountName)
+    {
+        NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"] invertedSet] invertedSet];
         
         if ([string isEqualToString:@""])
         {
@@ -146,7 +184,29 @@
 
 - (IBAction)btnNext: (UIButton *)sender
 {
+    if (!scrCreditCard.isHidden)
+    {
+        if (isCreditCardValid)
+        {
+
+        }
+    }
+    else
+    {
+        if ([txtBankAcNumber.text isEqualToString:txtConfirmAcNumber.text])
+        {
+            
+        }
+        else
+        {
+            [self showAlert:@"Account number are not matching"];
+        }
+    }
+    
+    UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidProfilePictureController"];
+    [self.navigationController pushViewController:paymentController animated:true];
 }
+
 
 - (IBAction)btnBack:(UIButton *)sender
 {
@@ -296,6 +356,14 @@
     }*/
 }
 
+
+- (void)showAlert :(NSString *)strMessage
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Truck Share" message:strMessage preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:alertAction];
+    [self.navigationController presentViewController:alert animated:YES completion:nil];
+}
 
 
 

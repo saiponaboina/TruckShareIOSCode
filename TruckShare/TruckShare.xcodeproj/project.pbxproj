@@ -20,6 +20,10 @@
 		0DDE9F901C3442C0007160CB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F8F1C3442C0007160CB /* RegisterViewController.m */; };
 		1833F6E31CE6370500A50B72 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833F6E21CE6370500A50B72 /* UserInfoViewController.m */; };
 		1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */; };
+		18BE5ADC1CEA207100DF9F13 /* Luhn.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5ADB1CEA207100DF9F13 /* Luhn.m */; };
+		18BE5ADF1CEA257B00DF9F13 /* ProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5ADE1CEA257B00DF9F13 /* ProfilePictureViewController.m */; };
+		18BE5AE21CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5AE11CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m */; };
+		18BE5AE51CEA347000DF9F13 /* DriverLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,14 @@
 		1833F6E21CE6370500A50B72 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		1833F6E51CE639D900A50B72 /* PaymentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentInfoViewController.h; sourceTree = "<group>"; };
 		1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentInfoViewController.m; sourceTree = "<group>"; };
+		18BE5ADA1CEA207100DF9F13 /* Luhn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Luhn.h; sourceTree = "<group>"; };
+		18BE5ADB1CEA207100DF9F13 /* Luhn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Luhn.m; sourceTree = "<group>"; };
+		18BE5ADD1CEA257B00DF9F13 /* ProfilePictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePictureViewController.h; sourceTree = "<group>"; };
+		18BE5ADE1CEA257B00DF9F13 /* ProfilePictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePictureViewController.m; sourceTree = "<group>"; };
+		18BE5AE01CEA293B00DF9F13 /* BackgroundCheckInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundCheckInfoViewController.h; sourceTree = "<group>"; };
+		18BE5AE11CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundCheckInfoViewController.m; sourceTree = "<group>"; };
+		18BE5AE31CEA346F00DF9F13 /* DriverLicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverLicenseViewController.h; sourceTree = "<group>"; };
+		18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverLicenseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,7 @@
 		0DDE9F6D1C341E59007160CB /* TruckShare */ = {
 			isa = PBXGroup;
 			children = (
+				18BE5AD81CEA205200DF9F13 /* Classes */,
 				1833F6E41CE6370A00A50B72 /* Registration */,
 				0DDE9F711C341E59007160CB /* AppDelegate.h */,
 				0DDE9F721C341E59007160CB /* AppDelegate.m */,
@@ -130,8 +143,31 @@
 				1833F6E21CE6370500A50B72 /* UserInfoViewController.m */,
 				1833F6E51CE639D900A50B72 /* PaymentInfoViewController.h */,
 				1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */,
+				18BE5ADD1CEA257B00DF9F13 /* ProfilePictureViewController.h */,
+				18BE5ADE1CEA257B00DF9F13 /* ProfilePictureViewController.m */,
+				18BE5AE01CEA293B00DF9F13 /* BackgroundCheckInfoViewController.h */,
+				18BE5AE11CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m */,
+				18BE5AE31CEA346F00DF9F13 /* DriverLicenseViewController.h */,
+				18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */,
 			);
 			name = Registration;
+			sourceTree = "<group>";
+		};
+		18BE5AD81CEA205200DF9F13 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				18BE5AD91CEA205A00DF9F13 /* credit card validation */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		18BE5AD91CEA205A00DF9F13 /* credit card validation */ = {
+			isa = PBXGroup;
+			children = (
+				18BE5ADA1CEA207100DF9F13 /* Luhn.h */,
+				18BE5ADB1CEA207100DF9F13 /* Luhn.m */,
+			);
+			name = "credit card validation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,13 +244,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D3849911C3AD14600E9800E /* ForgotPasswordViewController.m in Sources */,
+				18BE5ADC1CEA207100DF9F13 /* Luhn.m in Sources */,
 				0DDE9F901C3442C0007160CB /* RegisterViewController.m in Sources */,
+				18BE5AE21CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m in Sources */,
 				0DDE9F761C341E59007160CB /* ViewController.m in Sources */,
 				0DDE9F731C341E59007160CB /* AppDelegate.m in Sources */,
+				18BE5AE51CEA347000DF9F13 /* DriverLicenseViewController.m in Sources */,
 				0DDE9F701C341E59007160CB /* main.m in Sources */,
 				1833F6E31CE6370500A50B72 /* UserInfoViewController.m in Sources */,
 				0DDE9F891C3435A5007160CB /* HomeViewController.m in Sources */,
 				1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */,
+				18BE5ADF1CEA257B00DF9F13 /* ProfilePictureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
