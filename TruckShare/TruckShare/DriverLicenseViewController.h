@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DriverLicenseViewController : UIViewController
+@interface DriverLicenseViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+{
+    IBOutlet UITextField *txtLicenseNumber;
+    IBOutlet UITextField *txtLicenseExpiry;
+    IBOutlet UIButton *btnStateSelect;
+    IBOutlet UIImageView *imgProfile2;
+    IBOutlet UIView *vwStateList;
+    IBOutlet UIPickerView *pkrStateList;
 
+    NSMutableArray *arrState;
+    NSString *strState;
+}
 @end

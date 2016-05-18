@@ -18,6 +18,7 @@
 		0DDE9F891C3435A5007160CB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F881C3435A5007160CB /* HomeViewController.m */; };
 		0DDE9F8D1C343D1A007160CB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDE9F8C1C343D1A007160CB /* back.png */; };
 		0DDE9F901C3442C0007160CB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE9F8F1C3442C0007160CB /* RegisterViewController.m */; };
+		18281C2E1CECD00500751798 /* TruckInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18281C2D1CECD00500751798 /* TruckInfoViewController.m */; };
 		1833F6E31CE6370500A50B72 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833F6E21CE6370500A50B72 /* UserInfoViewController.m */; };
 		1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833F6E61CE639D900A50B72 /* PaymentInfoViewController.m */; };
 		18BE5ADC1CEA207100DF9F13 /* Luhn.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5ADB1CEA207100DF9F13 /* Luhn.m */; };
@@ -45,6 +46,8 @@
 		0DDE9F8C1C343D1A007160CB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0DDE9F8E1C3442C0007160CB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0DDE9F8F1C3442C0007160CB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		18281C2C1CECD00500751798 /* TruckInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckInfoViewController.h; sourceTree = "<group>"; };
+		18281C2D1CECD00500751798 /* TruckInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckInfoViewController.m; sourceTree = "<group>"; };
 		1833F6E11CE6370500A50B72 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		1833F6E21CE6370500A50B72 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		1833F6E51CE639D900A50B72 /* PaymentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentInfoViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				18BE5AE11CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m */,
 				18BE5AE31CEA346F00DF9F13 /* DriverLicenseViewController.h */,
 				18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */,
+				18281C2C1CECD00500751798 /* TruckInfoViewController.h */,
+				18281C2D1CECD00500751798 /* TruckInfoViewController.m */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				0DDE9F731C341E59007160CB /* AppDelegate.m in Sources */,
 				18BE5AE51CEA347000DF9F13 /* DriverLicenseViewController.m in Sources */,
 				0DDE9F701C341E59007160CB /* main.m in Sources */,
+				18281C2E1CECD00500751798 /* TruckInfoViewController.m in Sources */,
 				1833F6E31CE6370500A50B72 /* UserInfoViewController.m in Sources */,
 				0DDE9F891C3435A5007160CB /* HomeViewController.m in Sources */,
 				1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */,

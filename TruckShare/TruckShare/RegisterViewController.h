@@ -16,17 +16,8 @@
 
     
 
+    
 
-    
-    IBOutlet UITextField *txtLicenseNumber;
-    IBOutlet UITextField *txtLicenseExpiry;
-    IBOutlet UITextField *txtLicenseIssue;
-    IBOutlet UIImageView *imgProfile2;
-    
-    IBOutlet UITextField *txtRegNumber;
-    IBOutlet UITextField *txtVinNumber;
-    IBOutlet UITextField *txtRegisterdState;
-    IBOutlet UIImageView *imgDocPic;
 
     IBOutlet UITextField *txtInsurProvider;
     IBOutlet UITextField *txtPolicyNumber;

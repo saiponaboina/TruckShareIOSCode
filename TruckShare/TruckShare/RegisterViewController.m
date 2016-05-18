@@ -97,61 +97,11 @@
 }
 
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-
-    [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
-    if  (textField == txtLicenseNumber || textField==txtRegNumber)
-    {
-        NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
-        
-        if ([string isEqualToString:@""])
-        {
-            return YES;
-        }
-        
-        if([string rangeOfCharacterFromSet:validCharSet].location != NSNotFound)
-        {
-            return YES;
-        }
-        else
-        {
-            return NO;
-        }
-    }
-    else
-    {
-        return YES;
-    }
-    
-    return YES;
-}
-
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     scrDisplay.contentOffset = CGPointMake(screenNumber*screenWidth, scrDisplay.contentOffset.y);
-    
-    if (scrDisplay.contentOffset.x == (5*screenWidth))
-    {
-        UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:206];
-        UIButton *btnTemp2 = (UIButton *)[scrPage viewWithTag:105];
-        
-        imgProfile2.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        [picker dismissViewControllerAnimated:YES completion:nil];
-        
-        if (![self isMandatoryFieldEmpty])
-        {
-            [btnTemp setEnabled:TRUE];
-            [btnTemp2 setEnabled:TRUE];
-        }
-        else
-        {
-            [btnTemp setEnabled:FALSE];
-            [btnTemp2 setEnabled:FALSE];
-        }
-    }
-    
+   /*
     if (scrDisplay.contentOffset.x == (6*screenWidth))
     {
         UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:207];
@@ -170,7 +120,7 @@
             [btnTemp setEnabled:FALSE];
             [btnTemp2 setEnabled:FALSE];
         }
-    }
+    }*/
     
     if (scrDisplay.contentOffset.x == (7*screenWidth))
     {
@@ -298,9 +248,7 @@
             
         case 210:   lblHeader.text = @"Registration";
             break;
-            
     }
-
 }
 
 
@@ -463,26 +411,16 @@
             }
         }
     }
-    else if (scrDisplay.contentOffset.x==screenWidth*5)
-    {
-        if (txtLicenseNumber.text.length==0 ||
-            txtLicenseExpiry.text.length==0 ||
-            txtLicenseIssue.text.length==0 ||
-            imgProfile2.image==nil)
-        {
-            conditionPass = YES;
-        }
-    }
-    else if (scrDisplay.contentOffset.x==screenWidth*6)
-    {
-        if (txtRegNumber.text.length==0 ||
-            txtVinNumber.text.length==0 ||
-            txtRegisterdState.text.length==0 ||
-            imgDocPic.image==nil)
-        {
-            conditionPass = YES;
-        }
-    }
+//    else if (scrDisplay.contentOffset.x==screenWidth*6)
+//    {
+//        if (txtRegNumber.text.length==0 ||
+//            txtVinNumber.text.length==0 ||
+//            txtRegisterdState.text.length==0 ||
+//            imgDocPic.image==nil)
+//        {
+//            conditionPass = YES;
+//        }
+//    }
     else if (scrDisplay.contentOffset.x==screenWidth*7)
     {
         if (txtInsurProvider.text.length==0 ||

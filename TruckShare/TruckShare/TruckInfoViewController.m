@@ -1,18 +1,18 @@
 //
-//  DriverLicenseViewController.m
+//  TruckInfoViewController.m
 //  TruckShare
 //
-//  Created by Apple on 16/05/16.
+//  Created by Apple on 18/05/16.
 //  Copyright © 2016 Indrajeet. All rights reserved.
 //
 
-#import "DriverLicenseViewController.h"
+#import "TruckInfoViewController.h"
 
-@interface DriverLicenseViewController ()
+@interface TruckInfoViewController ()
 
 @end
 
-@implementation DriverLicenseViewController
+@implementation TruckInfoViewController
 
 - (void)viewDidLoad
 {
@@ -64,7 +64,7 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-    if  (textField == txtLicenseNumber)
+    if  (textField == txtVinNumber || textField==txtRegNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
         
@@ -91,19 +91,19 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    imgProfile2.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    imgDocPic.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
-        
-//        if (![self isMandatoryFieldEmpty])
-//        {
-//            [btnTemp setEnabled:TRUE];
-//            [btnTemp2 setEnabled:TRUE];
-//        }
-//        else
-//        {
-//            [btnTemp setEnabled:FALSE];
-//            [btnTemp2 setEnabled:FALSE];
-//        }
+    
+    //        if (![self isMandatoryFieldEmpty])
+    //        {
+    //            [btnTemp setEnabled:TRUE];
+    //            [btnTemp2 setEnabled:TRUE];
+    //        }
+    //        else
+    //        {
+    //            [btnTemp setEnabled:FALSE];
+    //            [btnTemp2 setEnabled:FALSE];
+    //        }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -244,13 +244,13 @@
 - (BOOL)isMandatoryFieldEmpty
 {
     BOOL conditionPass = NO;
-
-    if (txtLicenseNumber.text.length==0 ||
+    
+    /*if (txtVinNumber.text.length==0 ||
         txtLicenseExpiry.text.length==0 ||
         imgProfile2.image==nil)
     {
         conditionPass = YES;
-    }
+    }*/
     
     return conditionPass;
 }
@@ -268,17 +268,18 @@
         txtTemp.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
     }
     
-    imgProfile2.layer.masksToBounds = YES;
-    imgProfile2.layer.borderWidth = 1.0;
-    imgProfile2.layer.cornerRadius = 5.0;
-    imgProfile2.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
+    imgDocPic.layer.masksToBounds = YES;
+    imgDocPic.layer.borderWidth = 1.0;
+    imgDocPic.layer.cornerRadius = 5.0;
+    imgDocPic.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
     
     btnStateSelect.layer.masksToBounds = YES;
     btnStateSelect.layer.borderWidth = 1.0;
     btnStateSelect.layer.cornerRadius = 5.0;
     btnStateSelect.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
-
+    
 }
+
 
 
 @end
