@@ -13,23 +13,12 @@
     IBOutlet UIScrollView *scrPage;
     IBOutlet UIScrollView *scrDisplay;
     IBOutlet UILabel *lblSelectorLine;
-
-    
-
-    
-
-
-    IBOutlet UITextField *txtInsurProvider;
-    IBOutlet UITextField *txtPolicyNumber;
-    IBOutlet UITextField *txtDateOfExpiry;
-    IBOutlet UIImageView *imgDocPic2;
     
     
     IBOutlet UIScrollView *scrCredit;
     IBOutlet UILabel *lblHeader;
     
     
-    IBOutlet UITextView *txtTruckDimension;
     
     
     CGFloat screenWidth;

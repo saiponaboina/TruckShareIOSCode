@@ -1,18 +1,18 @@
 //
-//  TruckInfoViewController.m
+//  InsuranceViewController.m
 //  TruckShare
 //
-//  Created by Apple on 18/05/16.
+//  Created by Apple on 19/05/16.
 //  Copyright © 2016 Indrajeet. All rights reserved.
 //
 
-#import "TruckInfoViewController.h"
+#import "InsuranceViewController.h"
 
-@interface TruckInfoViewController ()
+@interface InsuranceViewController ()
 
 @end
 
-@implementation TruckInfoViewController
+@implementation InsuranceViewController
 
 - (void)viewDidLoad
 {
@@ -64,7 +64,7 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-    if  (textField == txtVinNumber || textField==txtRegNumber)
+    if  (textField == txtPolicyNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
         
@@ -106,26 +106,6 @@
     //        }
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return arrState.count;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [arrState objectAtIndex:row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    strState = [arrState objectAtIndex:row];
-}
 
 
 
@@ -155,8 +135,14 @@
 
 - (IBAction)btnNext: (UIButton *)sender
 {
-    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidInsuranceController"];
+    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdSelectTruckController"];
     [self.navigationController pushViewController:vwContrller animated:true];
+}
+
+
+- (IBAction)btnPrevious:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 
@@ -190,42 +176,6 @@
 }
 
 
-- (IBAction)btnShowStateList:(UIButton *)sender
-{
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        CGRect stateFrame = vwStateList.frame;
-        stateFrame.origin.y = [UIScreen mainScreen].bounds.size.height-stateFrame.size.height;
-        vwStateList.frame = stateFrame;
-    }];
-}
-
-
-- (IBAction)btnCancel:(UIButton *)sender
-{
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        CGRect stateFrame = vwStateList.frame;
-        stateFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
-        vwStateList.frame = stateFrame;
-    }];
-}
-
-
-- (IBAction)btnDone:(UIButton *)sender
-{
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        CGRect stateFrame = vwStateList.frame;
-        stateFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
-        vwStateList.frame = stateFrame;
-    } completion:^(BOOL finished) {
-        
-        [btnStateSelect setTitle:strState forState:UIControlStateNormal];
-    }];
-}
-
-
 
 
 
@@ -245,12 +195,21 @@
 {
     BOOL conditionPass = NO;
     
-    /*if (txtVinNumber.text.length==0 ||
-        txtLicenseExpiry.text.length==0 ||
-        imgProfile2.image==nil)
+    
+    if (txtInsurProvider.text.length==0 ||
+        txtPolicyNumber.text.length==0 ||
+        txtDateOfExpiry.text.length==0 ||
+        imgDocPic.image==nil)
     {
         conditionPass = YES;
-    }*/
+    }
+
+    /*if (txtVinNumber.text.length==0 ||
+     txtLicenseExpiry.text.length==0 ||
+     imgProfile2.image==nil)
+     {
+     conditionPass = YES;
+     }*/
     
     return conditionPass;
 }
@@ -273,13 +232,8 @@
     imgDocPic.layer.cornerRadius = 5.0;
     imgDocPic.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
     
-    btnStateSelect.layer.masksToBounds = YES;
-    btnStateSelect.layer.borderWidth = 1.0;
-    btnStateSelect.layer.cornerRadius = 5.0;
-    btnStateSelect.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
     
 }
-
 
 
 @end

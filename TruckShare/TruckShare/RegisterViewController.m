@@ -23,13 +23,6 @@
 
     lblHeader.text = @"Registration";
 
-    
-    txtTruckDimension.layer.masksToBounds = YES;
-    txtTruckDimension.layer.borderColor = [UIColor blackColor].CGColor;
-    txtTruckDimension.layer.borderWidth = 1.0;
-
-
-    [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
 }
@@ -122,7 +115,7 @@
         }
     }*/
     
-    if (scrDisplay.contentOffset.x == (7*screenWidth))
+   /* if (scrDisplay.contentOffset.x == (7*screenWidth))
     {
         UIButton *btnTemp = (UIButton *)[scrDisplay viewWithTag:208];
 //        UIButton *btnTemp2 = (UIButton *)[scrDisplay viewWithTag:107];
@@ -140,7 +133,7 @@
             [btnTemp setEnabled:FALSE];
 //            [btnTemp2 setEnabled:FALSE];
         }
-    }
+    }*/
 }
 
 
@@ -351,30 +344,7 @@
 
 
 
-#pragma mark==USER DEFINE METHODS===
-- (void)defaultProperties
-{
-    for (int i=301; i<=304; i++)
-    {
-        UIImageView *imgTemp = (UIImageView *)[scrDisplay viewWithTag:i];
-        
-        imgTemp.layer.masksToBounds = YES;
-        imgTemp.layer.borderWidth = 1.0;
-        imgTemp.layer.cornerRadius = 5.0;
-        imgTemp.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
-    }
-    
-    for (int i=401; i<=423; i++)
-    {
-        UITextField *txtTemp = (UITextField *)[scrDisplay viewWithTag:i];
-        
-        txtTemp.layer.masksToBounds = YES;
-        txtTemp.layer.borderWidth = 1.0;
-        txtTemp.layer.cornerRadius = 5.0;
-        txtTemp.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
-    }
 
-}
 
 
 - (void)setSelectorPosition :(UIButton *)selectedButton
@@ -423,13 +393,6 @@
 //    }
     else if (scrDisplay.contentOffset.x==screenWidth*7)
     {
-        if (txtInsurProvider.text.length==0 ||
-            txtPolicyNumber.text.length==0 ||
-            txtDateOfExpiry.text.length==0 ||
-            imgDocPic2.image==nil)
-        {
-            conditionPass = YES;
-        }
     }
     
     return conditionPass;

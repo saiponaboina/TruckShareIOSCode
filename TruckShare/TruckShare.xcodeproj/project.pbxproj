@@ -25,6 +25,9 @@
 		18BE5ADF1CEA257B00DF9F13 /* ProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5ADE1CEA257B00DF9F13 /* ProfilePictureViewController.m */; };
 		18BE5AE21CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5AE11CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m */; };
 		18BE5AE51CEA347000DF9F13 /* DriverLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */; };
+		18C032661CEE15B90045E7BF /* InsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C032651CEE15B90045E7BF /* InsuranceViewController.m */; };
+		18C032691CEE1CF90045E7BF /* SelectTruckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C032681CEE1CF90045E7BF /* SelectTruckViewController.m */; };
+		18C0326C1CEE28400045E7BF /* TruckSizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0326B1CEE28400045E7BF /* TruckSizeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,12 @@
 		18BE5AE11CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundCheckInfoViewController.m; sourceTree = "<group>"; };
 		18BE5AE31CEA346F00DF9F13 /* DriverLicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverLicenseViewController.h; sourceTree = "<group>"; };
 		18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverLicenseViewController.m; sourceTree = "<group>"; };
+		18C032641CEE15B90045E7BF /* InsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceViewController.h; sourceTree = "<group>"; };
+		18C032651CEE15B90045E7BF /* InsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceViewController.m; sourceTree = "<group>"; };
+		18C032671CEE1CF90045E7BF /* SelectTruckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTruckViewController.h; sourceTree = "<group>"; };
+		18C032681CEE1CF90045E7BF /* SelectTruckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTruckViewController.m; sourceTree = "<group>"; };
+		18C0326A1CEE28400045E7BF /* TruckSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckSizeViewController.h; sourceTree = "<group>"; };
+		18C0326B1CEE28400045E7BF /* TruckSizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckSizeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +163,12 @@
 				18BE5AE41CEA346F00DF9F13 /* DriverLicenseViewController.m */,
 				18281C2C1CECD00500751798 /* TruckInfoViewController.h */,
 				18281C2D1CECD00500751798 /* TruckInfoViewController.m */,
+				18C032641CEE15B90045E7BF /* InsuranceViewController.h */,
+				18C032651CEE15B90045E7BF /* InsuranceViewController.m */,
+				18C032671CEE1CF90045E7BF /* SelectTruckViewController.h */,
+				18C032681CEE1CF90045E7BF /* SelectTruckViewController.m */,
+				18C0326A1CEE28400045E7BF /* TruckSizeViewController.h */,
+				18C0326B1CEE28400045E7BF /* TruckSizeViewController.m */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -253,7 +268,9 @@
 				0DDE9F901C3442C0007160CB /* RegisterViewController.m in Sources */,
 				18BE5AE21CEA293B00DF9F13 /* BackgroundCheckInfoViewController.m in Sources */,
 				0DDE9F761C341E59007160CB /* ViewController.m in Sources */,
+				18C032691CEE1CF90045E7BF /* SelectTruckViewController.m in Sources */,
 				0DDE9F731C341E59007160CB /* AppDelegate.m in Sources */,
+				18C0326C1CEE28400045E7BF /* TruckSizeViewController.m in Sources */,
 				18BE5AE51CEA347000DF9F13 /* DriverLicenseViewController.m in Sources */,
 				0DDE9F701C341E59007160CB /* main.m in Sources */,
 				18281C2E1CECD00500751798 /* TruckInfoViewController.m in Sources */,
@@ -261,6 +278,7 @@
 				0DDE9F891C3435A5007160CB /* HomeViewController.m in Sources */,
 				1833F6E71CE639D900A50B72 /* PaymentInfoViewController.m in Sources */,
 				18BE5ADF1CEA257B00DF9F13 /* ProfilePictureViewController.m in Sources */,
+				18C032661CEE15B90045E7BF /* InsuranceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
