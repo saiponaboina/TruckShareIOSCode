@@ -29,9 +29,13 @@
     IBOutlet UIButton *btnRadioChecking;
     IBOutlet UIButton *btnSavingChecking;
     IBOutlet UIButton *btnNextOutlet;
+    IBOutlet UIButton *btnAccInfoNextOutlet;
     
     BOOL isCreditCardValid;
 }
+
+
+- (BOOL)isMandatoryFieldEmpty;
 
 - (IBAction)btnSelectCardType:(UIButton *)sender;
 - (IBAction)btnSelectPaymentMethod:(UIButton *)sender;

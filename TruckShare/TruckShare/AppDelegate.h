@@ -13,5 +13,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
+- (BOOL) isTheStringDate: (NSString*) theString dateFormat: (NSString *)formatOfDate;
+- (void)showAlert :(NSString *)strMessage viewController: (UIViewController *)presentInController;
 @end
 

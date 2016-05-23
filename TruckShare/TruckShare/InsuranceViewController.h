@@ -15,6 +15,7 @@
     IBOutlet UITextField *txtDateOfExpiry;
     
     IBOutlet UIImageView *imgDocPic;
+    IBOutlet UIButton *btnNextOutlet;
     
     NSMutableArray *arrState;
     NSString *strState;

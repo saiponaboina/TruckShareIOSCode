@@ -127,6 +127,7 @@
 - (IBAction)btnSelectAgreement:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+    [btnNext setEnabled:sender.selected];
     
     if (sender.selected)
     {

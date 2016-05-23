@@ -13,6 +13,7 @@
     IBOutlet UITextField *txtSocialSecurityNumber;
     IBOutlet UIButton *btnCheckedOutlet;
     IBOutlet UIButton *btnSSNOutlet;
+    IBOutlet UIButton *btnNext;
 }
 
 

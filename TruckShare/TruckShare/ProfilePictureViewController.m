@@ -7,15 +7,19 @@
 //
 
 #import "ProfilePictureViewController.h"
+#import "AppDelegate.h"
 
 @interface ProfilePictureViewController ()
-
+{
+    AppDelegate *appDelegate;
+}
 @end
 
 @implementation ProfilePictureViewController
 
 - (void)viewDidLoad
 {
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
@@ -82,12 +86,25 @@
 
 - (IBAction)btnNext: (UIButton *)sender
 {
-    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdBackgroundCheckInfo"];
-    [self.navigationController pushViewController:vwContrller animated:true];
+    if (imgProfile1.image != nil)
+    {
+        UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdBackgroundCheckInfo"];
+        [self.navigationController pushViewController:vwContrller animated:true];
+    }
+    else
+    {
+        [appDelegate showAlert:@"Please select image." viewController:self];
+    }
 }
 
 
 - (IBAction)btnBack:(UIButton *)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:true];
+}
+
+
+- (IBAction)btnPrevious:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:true];
 }

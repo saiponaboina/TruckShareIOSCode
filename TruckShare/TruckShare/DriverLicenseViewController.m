@@ -7,15 +7,19 @@
 //
 
 #import "DriverLicenseViewController.h"
+#import "AppDelegate.h"
 
 @interface DriverLicenseViewController ()
-
+{
+    AppDelegate *appDelegate;
+}
 @end
 
 @implementation DriverLicenseViewController
 
 - (void)viewDidLoad
 {
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     arrState = [[NSMutableArray alloc] initWithObjects:@"Alabama",@"Alaska",@"Arizona",@"California",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama", nil];
     [self defaultProperties];
     [self prefersStatusBarHidden];
@@ -63,10 +67,29 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
+    [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
+
     if  (textField == txtLicenseNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
+        
+        if ([string isEqualToString:@""])
+        {
+            return YES;
+        }
+        
+        if([string rangeOfCharacterFromSet:validCharSet].location != NSNotFound)
+        {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    if  (textField == txtLicenseExpiry)
+    {
+        NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789/"] invertedSet] invertedSet];
         
         if ([string isEqualToString:@""])
         {
@@ -93,18 +116,9 @@
 {
     imgProfile2.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
-        
-//        if (![self isMandatoryFieldEmpty])
-//        {
-//            [btnTemp setEnabled:TRUE];
-//            [btnTemp2 setEnabled:TRUE];
-//        }
-//        else
-//        {
-//            [btnTemp setEnabled:FALSE];
-//            [btnTemp2 setEnabled:FALSE];
-//        }
+    [self enablDisableNextbutton];
 }
+
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -153,10 +167,23 @@
 }
 
 
+- (IBAction)btnPrevious:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
+
 - (IBAction)btnNext: (UIButton *)sender
 {
-    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdTrukInfo"];
-    [self.navigationController pushViewController:vwContrller animated:true];
+    if ([appDelegate isTheStringDate:txtLicenseExpiry.text dateFormat:@"MM/dd/yyyy"])
+    {
+        UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdTrukInfo"];
+        [self.navigationController pushViewController:vwContrller animated:true];
+    }
+    else
+    {
+        [appDelegate showAlert:@"Invalid date." viewController:self];
+    }
 }
 
 
@@ -192,6 +219,9 @@
 
 - (IBAction)btnShowStateList:(UIButton *)sender
 {
+    [txtLicenseExpiry resignFirstResponder];
+    [txtLicenseNumber resignFirstResponder];
+    
     [UIView animateWithDuration:0.5 animations:^{
         
         CGRect stateFrame = vwStateList.frame;
@@ -222,6 +252,7 @@
     } completion:^(BOOL finished) {
         
         [btnStateSelect setTitle:strState forState:UIControlStateNormal];
+        [self enablDisableNextbutton];
     }];
 }
 
@@ -241,12 +272,26 @@
 
 
 #pragma mark ====USER DEFINE METHODS====
+- (void)enablDisableNextbutton
+{
+    if ([self isMandatoryFieldEmpty])
+    {
+        [btnNext setEnabled:FALSE];
+    }
+    else
+    {
+        [btnNext setEnabled:TRUE];
+    }
+}
+
+
 - (BOOL)isMandatoryFieldEmpty
 {
     BOOL conditionPass = NO;
 
     if (txtLicenseNumber.text.length==0 ||
         txtLicenseExpiry.text.length==0 ||
+        btnStateSelect.titleLabel.text.length==0 ||
         imgProfile2.image==nil)
     {
         conditionPass = YES;

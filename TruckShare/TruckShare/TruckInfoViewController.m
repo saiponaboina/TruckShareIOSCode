@@ -63,7 +63,8 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
+    [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
+
     if  (textField == txtVinNumber || textField==txtRegNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
@@ -93,17 +94,7 @@
 {
     imgDocPic.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    //        if (![self isMandatoryFieldEmpty])
-    //        {
-    //            [btnTemp setEnabled:TRUE];
-    //            [btnTemp2 setEnabled:TRUE];
-    //        }
-    //        else
-    //        {
-    //            [btnTemp setEnabled:FALSE];
-    //            [btnTemp2 setEnabled:FALSE];
-    //        }
+    [self enablDisableNextbutton];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -153,6 +144,12 @@
 }
 
 
+- (IBAction)btnPrevious:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
+
 - (IBAction)btnNext: (UIButton *)sender
 {
     UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidInsuranceController"];
@@ -192,6 +189,9 @@
 
 - (IBAction)btnShowStateList:(UIButton *)sender
 {
+    [txtRegNumber resignFirstResponder];
+    [txtVinNumber resignFirstResponder];
+
     [UIView animateWithDuration:0.5 animations:^{
         
         CGRect stateFrame = vwStateList.frame;
@@ -222,6 +222,7 @@
     } completion:^(BOOL finished) {
         
         [btnStateSelect setTitle:strState forState:UIControlStateNormal];
+        [self enablDisableNextbutton];
     }];
 }
 
@@ -241,16 +242,30 @@
 
 
 #pragma mark ====USER DEFINE METHODS====
+- (void)enablDisableNextbutton
+{
+    if ([self isMandatoryFieldEmpty])
+    {
+        [btnNextOutlet setEnabled:FALSE];
+    }
+    else
+    {
+        [btnNextOutlet setEnabled:TRUE];
+    }
+}
+
+
 - (BOOL)isMandatoryFieldEmpty
 {
     BOOL conditionPass = NO;
     
-    /*if (txtVinNumber.text.length==0 ||
-        txtLicenseExpiry.text.length==0 ||
-        imgProfile2.image==nil)
+    if (txtRegNumber.text.length==0 ||
+        txtVinNumber.text.length==0 ||
+        btnStateSelect.titleLabel.text.length==0 ||
+        imgDocPic.image==nil)
     {
         conditionPass = YES;
-    }*/
+    }
     
     return conditionPass;
 }

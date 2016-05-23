@@ -13,6 +13,7 @@
     IBOutlet UITextField *txtLicenseNumber;
     IBOutlet UITextField *txtLicenseExpiry;
     IBOutlet UIButton *btnStateSelect;
+    IBOutlet UIButton *btnNext;
     IBOutlet UIImageView *imgProfile2;
     IBOutlet UIView *vwStateList;
     IBOutlet UIPickerView *pkrStateList;

@@ -8,7 +8,12 @@
 
 #import "PaymentInfoViewController.h"
 #import "Luhn.h"
+#import "AppDelegate.h"
+
 @interface PaymentInfoViewController ()
+{
+    AppDelegate *appDelegate;
+}
 
 @end
 
@@ -16,6 +21,7 @@
 
 - (void)viewDidLoad
 {
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     scrCreditCard.contentSize = CGSizeMake(scrCreditCard.frame.size.width, scrCreditCard.frame.size.height);
     scrBankInformation.contentSize = CGSizeMake(scrBankInformation.frame.size.width, scrBankInformation.frame.size.height);
     
@@ -119,6 +125,7 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
+    
     if  (textField == txtCardNumber || textField == txtCvvCode || textField == txtPincode || textField == txtBankAcNumber || textField == txtConfirmAcNumber || textField == txtBankRoutNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
@@ -140,6 +147,24 @@
     else if (textField == txtAccountName)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"] invertedSet] invertedSet];
+        
+        if ([string isEqualToString:@""])
+        {
+            return YES;
+        }
+        
+        if([string rangeOfCharacterFromSet:validCharSet].location != NSNotFound)
+        {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    else if (textField == txtCardExpiry)
+    {
+        NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789/"] invertedSet] invertedSet];
         
         if ([string isEqualToString:@""])
         {
@@ -186,16 +211,22 @@
 {
     if (!scrCreditCard.isHidden)
     {
-        if (isCreditCardValid)
+        if ([appDelegate isTheStringDate:txtCardExpiry.text dateFormat:@"MM/yy"])
         {
-
+            UIViewController *thankYouController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdThankyouController"];
+            [self.navigationController pushViewController:thankYouController animated:true];
+        }
+        else
+        {
+            [self showAlert:@"Expiry date should be in mm/yy format."];
         }
     }
     else
     {
         if ([txtBankAcNumber.text isEqualToString:txtConfirmAcNumber.text])
         {
-            
+            UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidProfilePictureController"];
+            [self.navigationController pushViewController:paymentController animated:true];
         }
         else
         {
@@ -203,8 +234,6 @@
         }
     }
     
-    UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidProfilePictureController"];
-    [self.navigationController pushViewController:paymentController animated:true];
 }
 
 
@@ -346,14 +375,16 @@
 
 - (void)enablDisableNextbutton
 {
-   /* if ([self isMandatoryFieldEmpty])
+    if ([self isMandatoryFieldEmpty])
     {
         [btnNextOutlet setEnabled:FALSE];
+        [btnAccInfoNextOutlet setEnabled:FALSE];
     }
     else
     {
         [btnNextOutlet setEnabled:TRUE];
-    }*/
+        [btnAccInfoNextOutlet setEnabled:TRUE];
+    }
 }
 
 
@@ -363,6 +394,36 @@
     UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:alertAction];
     [self.navigationController presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (BOOL)isMandatoryFieldEmpty
+{
+    BOOL conditionPass = NO;
+    
+    if (!scrCreditCard.isHidden)
+    {
+        if (txtCardName.text.length==0 ||
+            txtCardNumber.text.length==0 ||
+            txtCardExpiry.text.length==0 ||
+            txtPincode.text.length==0 ||
+            txtCvvCode.text.length==0)
+        {
+            conditionPass = YES;
+        }
+    }
+    else
+    {
+        if (txtAccountName.text.length==0 ||
+            txtBankRoutNumber.text.length==0 ||
+            txtBankAcNumber.text.length==0 ||
+            txtConfirmAcNumber.text.length==0 )
+        {
+            conditionPass = YES;
+        }
+    }
+    
+    return conditionPass;
 }
 
 

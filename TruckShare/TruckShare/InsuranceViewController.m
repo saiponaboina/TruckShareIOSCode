@@ -7,15 +7,18 @@
 //
 
 #import "InsuranceViewController.h"
-
+#import "AppDelegate.h"
 @interface InsuranceViewController ()
-
+{
+    AppDelegate *appDelegate;
+}
 @end
 
 @implementation InsuranceViewController
 
 - (void)viewDidLoad
 {
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     arrState = [[NSMutableArray alloc] initWithObjects:@"Alabama",@"Alaska",@"Arizona",@"California",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama", nil];
     [self defaultProperties];
     [self prefersStatusBarHidden];
@@ -63,10 +66,29 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
+    [self performSelector:@selector(enablDisableNextbutton) withObject:nil afterDelay:0.1];
+
     if  (textField == txtPolicyNumber)
     {
         NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] invertedSet];
+        
+        if ([string isEqualToString:@""])
+        {
+            return YES;
+        }
+        
+        if([string rangeOfCharacterFromSet:validCharSet].location != NSNotFound)
+        {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    else if  (textField == txtDateOfExpiry)
+    {
+        NSCharacterSet *validCharSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789/"] invertedSet] invertedSet];
         
         if ([string isEqualToString:@""])
         {
@@ -93,17 +115,7 @@
 {
     imgDocPic.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    //        if (![self isMandatoryFieldEmpty])
-    //        {
-    //            [btnTemp setEnabled:TRUE];
-    //            [btnTemp2 setEnabled:TRUE];
-    //        }
-    //        else
-    //        {
-    //            [btnTemp setEnabled:FALSE];
-    //            [btnTemp2 setEnabled:FALSE];
-    //        }
+    [self enablDisableNextbutton];
 }
 
 
@@ -135,10 +147,16 @@
 
 - (IBAction)btnNext: (UIButton *)sender
 {
-    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdSelectTruckController"];
-    [self.navigationController pushViewController:vwContrller animated:true];
+    if ([appDelegate isTheStringDate:txtDateOfExpiry.text dateFormat:@"MM/dd/yyyy"])
+    {
+        UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdSelectTruckController"];
+        [self.navigationController pushViewController:vwContrller animated:true];
+    }
+    else
+    {
+        [appDelegate showAlert:@"Invalid date." viewController:self];
+    }
 }
-
 
 - (IBAction)btnPrevious:(UIButton *)sender
 {
@@ -191,10 +209,22 @@
 
 
 #pragma mark ====USER DEFINE METHODS====
+- (void)enablDisableNextbutton
+{
+    if ([self isMandatoryFieldEmpty])
+    {
+        [btnNextOutlet setEnabled:FALSE];
+    }
+    else
+    {
+        [btnNextOutlet setEnabled:TRUE];
+    }
+}
+
+
 - (BOOL)isMandatoryFieldEmpty
 {
     BOOL conditionPass = NO;
-    
     
     if (txtInsurProvider.text.length==0 ||
         txtPolicyNumber.text.length==0 ||
@@ -203,13 +233,6 @@
     {
         conditionPass = YES;
     }
-
-    /*if (txtVinNumber.text.length==0 ||
-     txtLicenseExpiry.text.length==0 ||
-     imgProfile2.image==nil)
-     {
-     conditionPass = YES;
-     }*/
     
     return conditionPass;
 }

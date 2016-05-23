@@ -16,6 +16,7 @@
     
     IBOutlet UIImageView *imgDocPic;
     IBOutlet UIButton *btnStateSelect;
+    IBOutlet UIButton *btnNextOutlet;
     IBOutlet UIView *vwStateList;
     IBOutlet UIPickerView *pkrStateList;
     

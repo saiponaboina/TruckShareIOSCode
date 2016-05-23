@@ -64,4 +64,32 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+- (BOOL) isTheStringDate: (NSString*) theString dateFormat: (NSString *)formatOfDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:formatOfDate];
+    NSDate *dateFromString = [[NSDate alloc] init];
+    
+    dateFromString = [dateFormatter dateFromString:theString];
+    
+    if (dateFromString !=nil)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+- (void)showAlert :(NSString *)strMessage viewController: (UIViewController *)presentInController
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Truck Share" message:strMessage preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:alertAction];
+    [presentInController presentViewController:alert animated:YES completion:nil];
+}
+
 @end
