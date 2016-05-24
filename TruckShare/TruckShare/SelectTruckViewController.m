@@ -15,7 +15,11 @@
 
 - (void)viewDidLoad
 {
+    imgPicker = [[UIImagePickerController alloc] init];
     scrPhotos.contentSize = CGSizeMake(scrPhotos.contentSize.width, 673.0);
+    
+    imgPicker.delegate = self;
+    
     [self prefersStatusBarHidden];
     [self defaultProperties];
     [super viewDidLoad];
@@ -50,11 +54,49 @@
 
 
 
+#pragma mark ====DELEGATE METHODS====
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    if (selectedSource>=201 && selectedSource<=210)
+    {
+        UIImageView *imgTemp = (UIImageView *)[self.view viewWithTag:selectedSource-100];
+        imgTemp.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    
+    if (selectedSource>=301 && selectedSource<=310)
+    {
+        UIImageView *imgTemp = (UIImageView *)[self.view viewWithTag:selectedSource-200];
+        imgTemp.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    [self enablDisableNextbutton];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark ====ACTIONS====
 - (IBAction)btnBack:(UIButton *)sender
 {
     [self.navigationController popToRootViewControllerAnimated:true];
 }
+
 
 - (IBAction)btnPrevious:(UIButton *)sender
 {
@@ -69,6 +111,20 @@
 }
 
 
+- (IBAction)btnCapture:(UIButton *)sender
+{
+    selectedSource = (int)sender.tag;
+    imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
+
+
+- (IBAction)btnUpload:(UIButton *)sender
+{
+    selectedSource = (int)sender.tag;
+    imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
 
 
 
@@ -84,6 +140,41 @@
 
 
 
+
+
+
+
+#pragma mark ====USER DEFINE METHODS====
+- (void)enablDisableNextbutton
+{
+    if (![self isMandatoryFieldEmpty])
+    {
+        [btnNextOutlet setEnabled:FALSE];
+    }
+    else
+    {
+        [btnNextOutlet setEnabled:TRUE];
+    }
+}
+
+
+- (BOOL)isMandatoryFieldEmpty
+{
+    BOOL conditionPass = YES;
+    
+    for (int i=101;i<=106;i++)
+    {
+        UIImageView *imgTemp = (UIImageView *)[self.view viewWithTag:i];
+
+        if (imgTemp.image == nil)
+        {
+            conditionPass = false;
+            break;
+        }
+    }
+    
+    return conditionPass;
+}
 
 
 - (void) defaultProperties

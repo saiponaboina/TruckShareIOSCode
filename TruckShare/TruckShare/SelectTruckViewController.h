@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectTruckViewController : UIViewController
+@interface SelectTruckViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     IBOutlet UIScrollView *scrPhotos;
+    IBOutlet UIButton *btnNextOutlet;
+    UIImagePickerController *imgPicker;
+
+    int selectedSource;
 }
 
 - (IBAction)btnBack:(UIButton *)sender;
 - (IBAction)btnPrevious:(UIButton *)sender;
 - (IBAction)btnNext:(UIButton *)sender;
+- (IBAction)btnCapture:(UIButton *)sender;
+- (IBAction)btnUpload:(UIButton *)sender;
 
 
 @end

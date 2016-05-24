@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TruckSizeViewController : UIViewController
+@interface TruckSizeViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
 {
     IBOutlet UITextView *txtTruckDimension;
+    IBOutlet UIButton *btnTruckType;
+    IBOutlet UIButton *btnNextOutlet;
+    IBOutlet UITextField *txtTruckType;
 }
 @end
