@@ -7,16 +7,17 @@
 //
 
 #import "TruckInfoViewController.h"
+#import "configuration.h"
 
 @interface TruckInfoViewController ()
 
 @end
 
 @implementation TruckInfoViewController
+@synthesize arrState;
 
 - (void)viewDidLoad
 {
-    arrState = [[NSMutableArray alloc] initWithObjects:@"Alabama",@"Alaska",@"Arizona",@"California",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama", nil];
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
@@ -110,14 +111,14 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [arrState objectAtIndex:row];
+    NSString *strStateName = [[arrState objectAtIndex:row] objectForKey:@"stateName"];
+    return strStateName;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    strState = [arrState objectAtIndex:row];
+    strState = [[arrState objectAtIndex:row] objectForKey:@"stateName"];
 }
-
 
 
 

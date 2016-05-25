@@ -20,8 +20,11 @@
     IBOutlet UIView *vwStateList;
     IBOutlet UIPickerView *pkrStateList;
     
-    NSMutableArray *arrState;
+    NSArray *arrState;
     NSString *strState;
 }
+
+
+@property (nonatomic, retain) NSArray *arrState;
 
 @end

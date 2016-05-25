@@ -8,15 +8,22 @@
 
 #import "UserInfoViewController.h"
 #import "PaymentInfoViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface UserInfoViewController ()
-
+{
+    AppDelegate *appDelegate;
+}
 @end
 
 @implementation UserInfoViewController
 
 - (void)viewDidLoad
 {
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     scrPersonal.contentSize = CGSizeMake(scrPersonal.contentSize.width, scrPersonal.frame.size.height);
 
     [super viewDidLoad];
@@ -166,8 +173,7 @@
     }
     else
     {
-        UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdPaymentInfoController"];
-        [self.navigationController pushViewController:paymentController animated:true];
+        [self checkEmailAddressUsed];
     }
 }
 
@@ -271,6 +277,41 @@
     UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:alertAction];
     [self.navigationController presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)checkEmailAddressUsed
+{
+    NSString *strUrl = [NSString stringWithFormat:@"%@appUser/IsEmailAlreadyExist",kBaseUrl];
+    NSDictionary *dictPara = @{@"eMailId":txtEmail.text};
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    manager.responseSerializer =  [AFJSONResponseSerializer serializer];
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    [manager GET:strUrl parameters:dictPara progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSDictionary *dictResult = responseObject;
+        NSNumber *emailExist = dictResult[@"result"];
+        
+        if ([emailExist boolValue])
+        {
+            [appDelegate showAlert:@"Email Address is already exist" viewController:self];
+        }
+        else
+        {
+            UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdPaymentInfoController"];
+            [self.navigationController pushViewController:paymentController animated:true];
+
+        }
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSLog(@"Error: %@",error);
+    }];
 }
 
 

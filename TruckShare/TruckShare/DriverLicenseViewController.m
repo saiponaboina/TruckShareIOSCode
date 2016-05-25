@@ -7,7 +7,11 @@
 //
 
 #import "DriverLicenseViewController.h"
+#import "TruckInfoViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface DriverLicenseViewController ()
 {
@@ -20,8 +24,8 @@
 - (void)viewDidLoad
 {
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    arrState = [[NSMutableArray alloc] initWithObjects:@"Alabama",@"Alaska",@"Arizona",@"California",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama", nil];
     [self defaultProperties];
+    [self getStateList];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
 }
@@ -133,12 +137,13 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [arrState objectAtIndex:row];
+    NSString *strStateName = [[arrState objectAtIndex:row] objectForKey:@"stateName"];
+    return strStateName;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    strState = [arrState objectAtIndex:row];
+    strState = [[arrState objectAtIndex:row] objectForKey:@"stateName"];
 }
 
 
@@ -177,7 +182,8 @@
 {
     if ([appDelegate isTheStringDate:txtLicenseExpiry.text dateFormat:@"MM/dd/yyyy"])
     {
-        UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdTrukInfo"];
+        TruckInfoViewController *vwContrller = (TruckInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"storyIdTrukInfo"];
+        vwContrller.arrState = arrState;
         [self.navigationController pushViewController:vwContrller animated:true];
     }
     else
@@ -322,6 +328,34 @@
     btnStateSelect.layer.borderWidth = 1.0;
     btnStateSelect.layer.cornerRadius = 5.0;
     btnStateSelect.layer.borderColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0].CGColor;
+}
+
+
+- (void) getStateList
+{
+    NSString *strUrl = [NSString stringWithFormat:@"%@State/GetAllStates",kBaseUrl];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    manager.responseSerializer =  [AFJSONResponseSerializer serializer];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    [manager GET:strUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSNumber *success = responseObject[@"success"];
+        
+        if (success)
+        {
+            arrState = responseObject[@"result"];
+            [pkrStateList reloadAllComponents];
+        }
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSLog(@"Error: %@",error);
+    }];
 
 }
 
