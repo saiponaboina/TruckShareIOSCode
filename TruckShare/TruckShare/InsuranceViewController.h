@@ -17,8 +17,9 @@
     IBOutlet UIImageView *imgDocPic;
     IBOutlet UIButton *btnNextOutlet;
     
-    NSMutableArray *arrState;
-    NSString *strState;
+    NSMutableDictionary *dictRegisDetailsTemp;
 }
+
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
 
 @end

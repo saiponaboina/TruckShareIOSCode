@@ -14,8 +14,11 @@
     IBOutlet UIButton *btnNextOutlet;
     UIImagePickerController *imgPicker;
 
+    NSMutableDictionary *dictRegisDetailsTemp;
     int selectedSource;
 }
+
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
 
 - (IBAction)btnBack:(UIButton *)sender;
 - (IBAction)btnPrevious:(UIButton *)sender;

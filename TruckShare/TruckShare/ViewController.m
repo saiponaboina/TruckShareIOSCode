@@ -8,15 +8,22 @@
 
 #import "ViewController.h"
 #import "HomeViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface ViewController ()
-
+{
+    AppDelegate *appDelegate;
+}
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [super viewDidLoad];
     [self prefersStatusBarHidden];
 }
@@ -24,8 +31,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    txtUsername.text = @"";
-    txtPassword.text = @"";
+//    txtUsername.text = @"";
+//    txtPassword.text = @"";
 }
 
 
@@ -75,9 +82,7 @@
 {
     if ([self validation])
     {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        HomeViewController *homeController = [storyboard instantiateViewControllerWithIdentifier:@"homeStoryId"];
-        [self.navigationController pushViewController:homeController animated:YES];
+        [self loginUser];
     }
     else
     {
@@ -127,9 +132,43 @@
 }
 
 
-- (void)alertMethod : (NSString *)strMessage
+- (void)loginUser
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Truck Share" message:strMessage preferredStyle:UIAlertControllerStyleAlert];
+    NSString *strUrl = [NSString stringWithFormat:@"%@appUser/IsValidUser",kBaseUrl];
+    NSDictionary *dictPara = @{kUserName: txtUsername.text,
+                               kPassword: txtPassword.text};
     
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    [manager POST:strUrl parameters:dictPara progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSLog(@"%@",responseObject);
+
+        if ([[responseObject valueForKey:@"result"] boolValue])
+        {
+            [kPref setObject:txtUsername.text forKey:kUserName];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            HomeViewController *homeController = [storyboard instantiateViewControllerWithIdentifier:@"homeStoryId"];
+            [UIApplication sharedApplication].keyWindow.rootViewController = homeController;
+        }
+        else
+        {
+            [appDelegate showAlert:@"Invalid username or password." viewController:self];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSLog(@"Error: %@",error);
+    }];
+    
+
 }
+
+
+
 @end

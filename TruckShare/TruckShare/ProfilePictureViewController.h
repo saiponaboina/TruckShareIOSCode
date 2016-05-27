@@ -11,5 +11,9 @@
 @interface ProfilePictureViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     IBOutlet UIImageView *imgProfile1;
+    NSMutableDictionary *dictRegisDetailsTemp;
 }
+
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
+
 @end

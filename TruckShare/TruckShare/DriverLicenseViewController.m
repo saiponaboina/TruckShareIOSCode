@@ -20,14 +20,22 @@
 @end
 
 @implementation DriverLicenseViewController
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
+
     [self defaultProperties];
     [self getStateList];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
 }
 
 
@@ -144,6 +152,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     strState = [[arrState objectAtIndex:row] objectForKey:@"stateName"];
+    strStateId = [[arrState objectAtIndex:row] objectForKey:@"stateId"];
 }
 
 
@@ -182,8 +191,19 @@
 {
     if ([appDelegate isTheStringDate:txtLicenseExpiry.text dateFormat:@"MM/dd/yyyy"])
     {
+        NSData *profilePicData = UIImagePNGRepresentation(imgProfile2.image);
+        NSString *strEncodedImage = [profilePicData base64EncodedStringWithOptions:0];
+        
+        NSDictionary *dictTemp = @{kLicenseNumber: txtLicenseNumber.text,
+                                   kLicenseIssuedStateId: strStateId,
+                                   kLicenseExpiryDate: txtLicenseExpiry.text,
+                                   kLicenseImageBase64String: strEncodedImage,
+                                   kLicenseImageFormat: @"png"};
+        [dictRegisDetailsTemp setObject:dictTemp forKey:@"dirverLicenseInfo"];
+
         TruckInfoViewController *vwContrller = (TruckInfoViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"storyIdTrukInfo"];
         vwContrller.arrState = arrState;
+        vwContrller.dictRegisDetails = dictRegisDetailsTemp;
         [self.navigationController pushViewController:vwContrller animated:true];
     }
     else

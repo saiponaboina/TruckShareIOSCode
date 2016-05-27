@@ -301,7 +301,19 @@
         }
         else
         {
-            UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdPaymentInfoController"];
+            NSMutableDictionary *dictUserInfo = [[NSMutableDictionary alloc] init];
+
+            [dictUserInfo setObject:@"Internal" forKey:kAuthenticationSource];
+            [dictUserInfo setObject:txtFirstName.text forKey:kFirstName];
+            [dictUserInfo setObject:txtSecondName.text forKey:kLastName];
+            [dictUserInfo setObject:txtEmail.text forKey:kEmailAddress];
+            [dictUserInfo setObject:txtPassword.text forKey:kPassword];
+            [dictUserInfo setObject:txtMobile.text forKey:kMobileNumber];
+            
+            NSDictionary *dictTemp = @{@"userInfo":dictUserInfo};
+
+            PaymentInfoViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdPaymentInfoController"];
+            paymentController.dictRegisDetails = (NSMutableDictionary *)dictTemp;
             [self.navigationController pushViewController:paymentController animated:true];
 
         }

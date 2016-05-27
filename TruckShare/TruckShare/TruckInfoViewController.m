@@ -7,7 +7,11 @@
 //
 
 #import "TruckInfoViewController.h"
+#import "InsuranceViewController.h"
 #import "configuration.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface TruckInfoViewController ()
 
@@ -15,12 +19,21 @@
 
 @implementation TruckInfoViewController
 @synthesize arrState;
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
+
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//    NSLog(@"dict: %@",dictRegisDetails);
 }
 
 
@@ -118,6 +131,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     strState = [[arrState objectAtIndex:row] objectForKey:@"stateName"];
+    strStateId = [[arrState objectAtIndex:row] objectForKey:@"stateId"];
 }
 
 
@@ -153,7 +167,18 @@
 
 - (IBAction)btnNext: (UIButton *)sender
 {
-    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidInsuranceController"];
+    NSData *profilePicData = UIImagePNGRepresentation(imgDocPic.image);
+    NSString *strEncodedImage = [profilePicData base64EncodedStringWithOptions:0];
+    
+    NSDictionary *dictTemp = @{kTruckRegistrationNumber: txtRegNumber.text,
+                               kTruckVinNumber: txtVinNumber.text,
+                               kTruckRegisteredStateId: strStateId,
+                               kTruckTitleDocImageBase64String: strEncodedImage,
+                               kTruckTitleDocImageFormat: @"png"};
+    [dictRegisDetailsTemp setObject:dictTemp forKey:@"truckInfo"];
+
+    InsuranceViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidInsuranceController"];
+    vwContrller.dictRegisDetails = dictRegisDetailsTemp;
     [self.navigationController pushViewController:vwContrller animated:true];
 }
 

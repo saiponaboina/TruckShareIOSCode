@@ -7,12 +7,17 @@
 //
 
 #import "TruckSizeViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface TruckSizeViewController ()
 
 @end
 
 @implementation TruckSizeViewController
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {

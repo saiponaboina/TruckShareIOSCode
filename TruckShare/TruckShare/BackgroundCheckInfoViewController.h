@@ -14,8 +14,11 @@
     IBOutlet UIButton *btnCheckedOutlet;
     IBOutlet UIButton *btnSSNOutlet;
     IBOutlet UIButton *btnNext;
+    
+    NSMutableDictionary *dictRegisDetailsTemp;
 }
 
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
 
 - (IBAction)btnShowSSN:(UIButton *)sender;
 

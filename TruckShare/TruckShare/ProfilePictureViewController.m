@@ -7,7 +7,11 @@
 //
 
 #import "ProfilePictureViewController.h"
+#import "BackgroundCheckInfoViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface ProfilePictureViewController ()
 {
@@ -16,13 +20,21 @@
 @end
 
 @implementation ProfilePictureViewController
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"dict: %@",dictRegisDetails);
 }
 
 
@@ -88,7 +100,15 @@
 {
     if (imgProfile1.image != nil)
     {
-        UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdBackgroundCheckInfo"];
+        NSData *profilePicData = UIImagePNGRepresentation(imgProfile1.image);
+        NSString *strEncodedImage = [profilePicData base64EncodedStringWithOptions:0];
+        
+        NSDictionary *dictTemp = @{kProfileImageBase64String: strEncodedImage,
+                                   kProfileImageFormat: @"png"};
+        [dictRegisDetailsTemp setObject:dictTemp forKey:@"profilePic"];
+        
+        BackgroundCheckInfoViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdBackgroundCheckInfo"];
+        vwContrller.dictRegisDetails = dictRegisDetailsTemp;
         [self.navigationController pushViewController:vwContrller animated:true];
     }
     else

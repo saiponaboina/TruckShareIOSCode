@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "configuration.h"
 
 @interface AppDelegate ()
 
@@ -31,9 +32,18 @@
     else
     {
         UIStoryboard *iPhoneStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        UIViewController *iPhoneInitialViewController = [iPhoneStoryboard instantiateInitialViewController];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        self.window.rootViewController = iPhoneInitialViewController;
+
+        if ([kPref valueForKey:kUserName]==nil)
+        {
+            UIViewController *iPhoneInitialViewController = [iPhoneStoryboard instantiateInitialViewController];
+            self.window.rootViewController = iPhoneInitialViewController;
+        }
+        else
+        {
+            UIViewController *vwController = [iPhoneStoryboard instantiateViewControllerWithIdentifier:@"homeStoryId"];
+            self.window.rootViewController = vwController;
+        }
         self.window.clipsToBounds =YES;
         [self.window makeKeyAndVisible];
     }

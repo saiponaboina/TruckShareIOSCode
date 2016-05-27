@@ -6,23 +6,36 @@
 //
 
 #import "SelectTruckViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface SelectTruckViewController ()
 
 @end
 
 @implementation SelectTruckViewController
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {
     imgPicker = [[UIImagePickerController alloc] init];
     scrPhotos.contentSize = CGSizeMake(scrPhotos.contentSize.width, 673.0);
-    
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
+
     imgPicker.delegate = self;
     
     [self prefersStatusBarHidden];
     [self defaultProperties];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"dict: %@",dictRegisDetails);
+
 }
 
 - (void)didReceiveMemoryWarning {

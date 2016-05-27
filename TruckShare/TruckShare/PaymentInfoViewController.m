@@ -7,8 +7,13 @@
 //
 
 #import "PaymentInfoViewController.h"
+#import "ProfilePictureViewController.h"
+#import "configuration.h"
 #import "Luhn.h"
+#import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
+
 
 @interface PaymentInfoViewController ()
 {
@@ -18,12 +23,15 @@
 @end
 
 @implementation PaymentInfoViewController
+@synthesize  dictRegisDetails;
 
 - (void)viewDidLoad
 {
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     scrCreditCard.contentSize = CGSizeMake(scrCreditCard.frame.size.width, scrCreditCard.frame.size.height);
     scrBankInformation.contentSize = CGSizeMake(scrBankInformation.frame.size.width, scrBankInformation.frame.size.height);
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
+    selectedAccountType = @"Checking";
     
     [super viewDidLoad];
     [self prefersStatusBarHidden];
@@ -33,6 +41,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"dict Details: %@",dictRegisDetails);
     isCreditCardValid = false;
 }
 
@@ -213,8 +222,7 @@
     {
         if ([appDelegate isTheStringDate:txtCardExpiry.text dateFormat:@"MM/yy"])
         {
-            UIViewController *thankYouController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdThankyouController"];
-            [self.navigationController pushViewController:thankYouController animated:true];
+            [self renterRegistration];
         }
         else
         {
@@ -225,7 +233,14 @@
     {
         if ([txtBankAcNumber.text isEqualToString:txtConfirmAcNumber.text])
         {
-            UIViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidProfilePictureController"];
+            NSDictionary *dictTemp = @{kAccountType: selectedAccountType,
+                                       kAccountHolderName: txtAccountName.text,
+                                       kBankAccountNumber: txtBankAcNumber.text,
+                                       kBankRoutingNumber: txtBankRoutNumber.text};
+            [dictRegisDetailsTemp setObject:dictTemp forKey:@"accountInfo"];
+            
+            ProfilePictureViewController *paymentController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidProfilePictureController"];
+            paymentController.dictRegisDetails = dictRegisDetailsTemp;
             [self.navigationController pushViewController:paymentController animated:true];
         }
         else
@@ -250,16 +265,17 @@
     if (sender.tag == 101)
     {
         lblHeader.text = @"Bank Information";
-        //showBankInfoScreen = YES;
-         scrCreditCard.hidden = true;
-         scrBankInformation.hidden = false;
+        scrCreditCard.hidden = true;
+        scrBankInformation.hidden = false;
+        [dictRegisDetailsTemp setObject:@"D" forKey:kAppUserType];
+    
     }
     else
     {
         lblHeader.text = @"Credit Card";
-        //   showBankInfoScreen = NO;
          scrCreditCard.hidden = false;
          scrBankInformation.hidden = true;
+        [dictRegisDetailsTemp setObject:@"R" forKey:kAppUserType];
     }
 }
 
@@ -310,11 +326,13 @@
     {
         btnRadioChecking.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0];
         btnSavingChecking.backgroundColor = [UIColor whiteColor];
+        selectedAccountType = @"Checking";
     }
     else
     {
         btnSavingChecking.backgroundColor = [UIColor colorWithRed:23.0/255.0 green:95.0/255.0 blue:199.0/255.0 alpha:1.0];
         btnRadioChecking.backgroundColor = [UIColor whiteColor];
+        selectedAccountType = @"Savings";
     }
 }
 
@@ -424,6 +442,53 @@
     }
     
     return conditionPass;
+}
+
+
+- (void)renterRegistration
+{
+    NSString *strUrl = [NSString stringWithFormat:@"%@appUser/RegisterAppUser",kBaseUrl];
+    NSMutableDictionary *dictTemp = [dictRegisDetailsTemp objectForKey:@"userInfo"];
+    NSDictionary *dictPara = @{kAuthenticationSource: dictTemp[kAuthenticationSource],
+                               kFirstName: dictTemp[kFirstName],
+                               kLastName: dictTemp[kLastName],
+                               kPassword: dictTemp[kPassword],
+                               kEmailAddress: dictTemp[kEmailAddress],
+                               kMobileNumber: dictTemp[kMobileNumber],
+                               kCreditCardType: btnCreditCard.titleLabel.text,
+                               kFullNameOnCard: txtCardName.text,
+                               kCreditCardNumber: txtCardNumber.text,
+                               kExpiration: txtCardExpiry.text,
+                               kCvvCode: txtCvvCode.text,
+                               kZipCode: txtPincode.text,
+                               kAppUserType: dictRegisDetailsTemp[kAppUserType]};
+    
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:true];
+    [manager POST:strUrl parameters:dictPara progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        
+        if ([[responseObject valueForKey:@"success"] boolValue])
+        {
+            UIViewController *thankYouController = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdThankyouController"];
+            [self.navigationController pushViewController:thankYouController animated:true];
+        }
+        else
+        {
+            [appDelegate showAlert:@"Unable to register. Try againg." viewController:self];
+        }
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:true];
+        NSLog(@"Error: %@",error);
+    }];
+
 }
 
 

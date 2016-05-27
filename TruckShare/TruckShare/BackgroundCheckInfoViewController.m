@@ -7,18 +7,32 @@
 //
 
 #import "BackgroundCheckInfoViewController.h"
+#import "DriverLicenseViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface BackgroundCheckInfoViewController ()
 
 @end
 
 @implementation BackgroundCheckInfoViewController
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
+
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//    NSLog(@"dict: %@",dictRegisDetails);
 }
 
 
@@ -142,7 +156,11 @@
 
 - (IBAction)btnNext: (UIButton *)sender
 {
-    UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidDriverLicenseController"];
+    NSDictionary *dictTemp = @{kSsnNumber: txtSocialSecurityNumber.text};
+    [dictRegisDetailsTemp setObject:dictTemp forKey:@"BackgroundCheckInfo"];
+    
+     DriverLicenseViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyidDriverLicenseController"];
+    vwContrller.dictRegisDetails = dictRegisDetailsTemp;
     [self.navigationController pushViewController:vwContrller animated:true];
 }
 

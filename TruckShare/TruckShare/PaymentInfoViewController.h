@@ -31,9 +31,13 @@
     IBOutlet UIButton *btnNextOutlet;
     IBOutlet UIButton *btnAccInfoNextOutlet;
     
+    NSMutableDictionary *dictRegisDetailsTemp;
+    NSString *selectedAccountType;
     BOOL isCreditCardValid;
 }
 
+
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
 
 - (BOOL)isMandatoryFieldEmpty;
 

@@ -7,7 +7,12 @@
 //
 
 #import "InsuranceViewController.h"
+#import "SelectTruckViewController.h"
+#import "configuration.h"
+#import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
+
 @interface InsuranceViewController ()
 {
     AppDelegate *appDelegate;
@@ -15,14 +20,21 @@
 @end
 
 @implementation InsuranceViewController
+@synthesize dictRegisDetails;
 
 - (void)viewDidLoad
 {
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    arrState = [[NSMutableArray alloc] initWithObjects:@"Alabama",@"Alaska",@"Arizona",@"California",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama",@"Alabama", nil];
+    dictRegisDetailsTemp = [[NSMutableDictionary alloc] initWithDictionary:dictRegisDetails];
+
     [self defaultProperties];
     [self prefersStatusBarHidden];
     [super viewDidLoad];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
 }
 
 
@@ -149,7 +161,18 @@
 {
     if ([appDelegate isTheStringDate:txtDateOfExpiry.text dateFormat:@"MM/dd/yyyy"])
     {
-        UIViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdSelectTruckController"];
+        NSData *profilePicData = UIImagePNGRepresentation(imgDocPic.image);
+        NSString *strEncodedImage = [profilePicData base64EncodedStringWithOptions:0];
+        
+        NSDictionary *dictTemp = @{kInsuranceProvider: txtInsurProvider.text,
+                                   kPolicyNumber: txtPolicyNumber.text,
+                                   kDateOfExpiry: txtDateOfExpiry,
+                                   kInsuranceDocImageBase64String: strEncodedImage,
+                                   kInsuranceDocImageFormat: @"png"};
+        [dictRegisDetailsTemp setObject:dictTemp forKey:@"insuranceInfo"];
+        
+        SelectTruckViewController *vwContrller = [self.storyboard instantiateViewControllerWithIdentifier:@"storyIdSelectTruckController"];
+        vwContrller.dictRegisDetails = dictRegisDetailsTemp;
         [self.navigationController pushViewController:vwContrller animated:true];
     }
     else

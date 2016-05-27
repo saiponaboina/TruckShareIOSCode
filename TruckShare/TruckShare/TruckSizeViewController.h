@@ -15,4 +15,7 @@
     IBOutlet UIButton *btnNextOutlet;
     IBOutlet UITextField *txtTruckType;
 }
+
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
+
 @end

@@ -20,5 +20,11 @@
 
     NSArray *arrState;
     NSString *strState;
+    NSString *strStateId;
+    NSMutableDictionary *dictRegisDetailsTemp;
+    
 }
+
+@property (nonatomic, retain) NSMutableDictionary *dictRegisDetails;
+
 @end

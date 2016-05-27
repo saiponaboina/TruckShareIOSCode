@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+{
+    IBOutlet UIView *vwSideBar;
+    
+    NSArray *arrMenuItems;
+}
 
+- (IBAction)btnShowsideBar:(UIButton *)sender;
 
-- (IBAction)btnBack:(UIButton *)sender;
+- (void)defaultProperties;
 @end

@@ -20,6 +20,5 @@
 
 
 - (BOOL)validation;
-- (void)alertMethod;
 @end
 
